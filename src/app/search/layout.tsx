@@ -14,13 +14,14 @@ export default function SearchLayout({
           <div className='order-first w-full flex-none md:max-w-[280px]'>
             Status
             {/* <Sidebar /> */}
-            <RefinementList attribute='warehouses.status.name' />
+            <RefinementList attribute='warehouses.status.name' classNames={{
+              count: "hidden"
+            }} />
           </div>
           <div className='order-last min-h-screen w-full md:order-none'>
             {children}
           </div>
         </div>
-        {/* <Footer /> */}
       </Suspense>
     </>
   );

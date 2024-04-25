@@ -1,15 +1,16 @@
 'use client';
 import Hit from '@/components/molecules/hit';
-import { Hits, Pagination } from 'react-instantsearch';
+import { Configure, Hits, Pagination } from 'react-instantsearch';
 
 export default function SearchPage() {
   return (
     <div>
+      <Configure hitsPerPage={9}/>
       <Hits
         hitComponent={Hit}
-        classNames={{ list: 'grid grid-cols-1 md:grid-cols-3' }}
+        classNames={{ list: 'grid grid-cols-1 md:grid-cols-3 gap-4' }}
       />
-      <div className='flex justify-center'>
+      <div className='flex justify-center my-8'>
         <Pagination
           showFirst={false}
           showLast={false}
@@ -18,7 +19,7 @@ export default function SearchPage() {
             item: 'w-9 h-9 items-center justify-center flex',
             pageItem: 'border-r-2 border-[#374151] justify-center flex ',
             previousPageItem: 'border-r-2 border-[#374151]',
-            selectedItem: 'bg-[#3574B6] w-full',
+            selectedItem: 'bg-[#3574B6]',
           }}
         />
       </div>
