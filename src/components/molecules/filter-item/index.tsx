@@ -11,7 +11,7 @@ export default function FilterItem(props: Props) {
       <Disclosure>
         {({ open }) => (
           <>
-            <Disclosure.Button className='flex w-full justify-between  px-2 py-2 text-left text-sm font-medium border-2 border-t-0 border-[#374151]'>
+            <Disclosure.Button className='flex w-full justify-between  px-2 py-2 text-left text-sm font-medium border-2 border-t-0 border-border-default'>
               <span>{props.title}</span>
               <ChevronUpIcon
                 className={`${
@@ -19,7 +19,7 @@ export default function FilterItem(props: Props) {
                 } h-5 w-5 text-white`}
               />
             </Disclosure.Button>
-            <Disclosure.Panel className='px-4 pb-2 pt-4 text-sm border-2 border-[#374151]'>
+            <Disclosure.Panel className='px-4 pb-2 pt-4 text-sm border-2 border-border-default'>
               {props.content}
             </Disclosure.Panel>
           </>
