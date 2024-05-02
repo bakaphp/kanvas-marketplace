@@ -9,6 +9,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'primary-background': '#111827',
+        border: {
+          default: '#374151',
+        },
+      },
       fontFamily: {
         sans: ['var(--font-geist-sans)'],
       },
@@ -40,11 +46,11 @@ module.exports = {
   plugins: [
     require('@tailwindcss/container-queries'),
     require('@tailwindcss/typography'),
-    // @ts-ignore 
+    // @ts-ignore
     plugin(({ matchUtilities, theme }) => {
       matchUtilities(
         {
-          // @ts-ignore 
+          // @ts-ignore
           'animation-delay': (value) => {
             return {
               'animation-delay': value,

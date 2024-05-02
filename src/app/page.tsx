@@ -14,7 +14,6 @@ export const metadata = {
 export default async function HomePage() {
   return (
     <>
-      {/* <ThreeItemGrid /> */}
       <Suspense>
         <Suspense>
           <Footer />

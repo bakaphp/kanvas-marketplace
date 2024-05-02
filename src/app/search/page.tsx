@@ -15,10 +15,10 @@ export default function SearchPage() {
           showFirst={false}
           showLast={false}
           classNames={{
-            list: 'flex items-center justify-center w-auto border-2 border-[#374151] rounded-md',
+            list: 'flex items-center justify-center w-auto border-2 border-border-default rounded-md',
             item: 'w-9 h-9 items-center justify-center flex',
-            pageItem: 'border-r-2 border-[#374151] justify-center flex ',
-            previousPageItem: 'border-r-2 border-[#374151]',
+            pageItem: 'border-r-2 border-border-default justify-center flex ',
+            previousPageItem: 'border-r-2 border-border-default',
             selectedItem: 'bg-[#3574B6]',
           }}
         />
