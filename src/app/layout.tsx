@@ -20,7 +20,10 @@ export const metadata = {
   },
 };
 
-const OpenSans = Open_Sans();
+const OpenSans = Open_Sans({
+  subsets: ['latin'],
+});
+
 export default async function RootLayout({
   children,
 }: {
