@@ -223,6 +223,7 @@ export async function addToCart(
     },
     cache: 'no-store'
   });
+  console.log(res)
   return reshapeCart(res.body.data.cartLinesAdd.cart);
 }
 
