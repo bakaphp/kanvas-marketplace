@@ -8,6 +8,7 @@ import { AddToCart } from '../cart/add-to-cart';
 function useProductDescription(product: any) {
   const variants = useMemo(() => {
     return product?.variants?.map((variant: any) => {
+      console.log(variant.channel, 'klk');
       return {
         id: 'gid://shopify/ProductVariant/' + variant?.metadata?.shopify?.id,
         selectedOptions: [
@@ -16,7 +17,9 @@ function useProductDescription(product: any) {
             value: variant.name,
           },
         ],
-        availableForSale: true,
+        availableForSale: variant?.channel?.quantity >= 1,
+        price: variant?.channel?.price,
+        quantity: variant?.channel?.quantity,
       };
     });
   }, []);
@@ -36,8 +39,9 @@ function useProductDescription(product: any) {
     },
   };
 }
-export function ProductDescription({ product }: { product: any }) {
+export async function ProductDescription({ product }: { product: any }) {
   const { models } = useProductDescription(product);
+  console.log(models.variants[0].price);
   return (
     <>
       <div className='mb-6 flex flex-col border-b pb-6 dark:border-neutral-700'>
@@ -52,14 +56,21 @@ export function ProductDescription({ product }: { product: any }) {
       ) : null}
 
       <div>
-        <Price amount='29.0' className='text-2xl font-bold' />
+        <Price
+          amount={models.variants[0].price}
+          className='text-2xl font-bold'
+          currencyCode='DOP'
+        />
         <p className='text-xs text-[#E5E7EB]'>+12% VAT Added</p>
       </div>
       <Suspense fallback={null}>
         <VariantSelector options={models.options} variants={models.variants} />
       </Suspense>
       <Suspense fallback={null}>
-        <AddToCart variants={models.variants} availableForSale={true} />
+        <AddToCart
+          variants={models.variants}
+          availableForSale={models.variants[0].availableForSale}
+        />
       </Suspense>
     </>
   );

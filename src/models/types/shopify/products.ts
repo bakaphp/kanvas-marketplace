@@ -80,7 +80,8 @@ export type ProductVariant = {
     name: string;
     value: string;
   }[];
-  price: Money;
+  price: any;
+  quantity?: any
 };
 
 export type SEO = {
