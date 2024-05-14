@@ -49,7 +49,7 @@ export default async function ProductPage({ params }: { params: any }) {
           </div>
 
           <div className='basis-full lg:basis-2/6'>
-            <Suspense fallback={null}>
+            <Suspense fallback={<div className='h-full w-full bg-gray-200 animate-pulse' />}>
               <ProductDescription
                 product={{
                   title: models.product?.products.data[0].name,
