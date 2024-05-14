@@ -223,7 +223,7 @@ export async function addToCart(
     },
     cache: 'no-store'
   });
-  console.log(res)
+  console.log({res, cartId, lines})
   return reshapeCart(res.body.data.cartLinesAdd.cart);
 }
 
