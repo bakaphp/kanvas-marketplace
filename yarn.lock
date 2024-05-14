@@ -301,10 +301,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@kanvas/core@^0.0.119":
-  version "0.0.119"
-  resolved "https://registry.yarnpkg.com/@kanvas/core/-/core-0.0.119.tgz#e62b9be06c2505d17c414d803e5ea48a6136129d"
-  integrity sha512-v+g7YOeY8+gzfURJiUxyHzg/U9U1jeaMdj6YfLoSgD5Ur/EvOM2aJu1yxs6SxReCxNQpUx+K5VGod1ue0G+YIA==
+"@kanvas/core@^0.0.134":
+  version "0.0.134"
+  resolved "https://registry.yarnpkg.com/@kanvas/core/-/core-0.0.134.tgz#9a19bd8e662b87bef876024e6fcae3667aeb86eb"
+  integrity sha512-6mxc94orFdkWsJ7wlMfEHEcncB8e+J88zA0MGAeKH3WwiuttQZDeg9zRtwUFMfzmp00MHDGrRVgj8ny7AI7fdA==
   dependencies:
     "@apollo/client" "^3.7.10"
     axios "^1.6.2"
