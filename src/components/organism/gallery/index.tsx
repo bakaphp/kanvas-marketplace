@@ -8,14 +8,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
-export function Gallery({ images }: { images: { src: string; altText: string }[] }) {
+export function Gallery({ images = [] }: { images: { src: string; altText: string }[] }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const imageSearchParam = searchParams.get('image');
   const imageIndex = imageSearchParam ? parseInt(imageSearchParam) : 0;
 
   const nextSearchParams = new URLSearchParams(searchParams.toString());
-  const nextImageIndex = imageIndex + 1 < images?.length ? imageIndex + 1 : 0;
+  const nextImageIndex = imageIndex + 1 < images.length ? imageIndex + 1 : 0;
   nextSearchParams.set('image', nextImageIndex.toString());
   const nextUrl = createUrl(pathname, nextSearchParams);
 
@@ -35,13 +35,13 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
             className="h-[640px] w-[660px] object-cover"
             fill
             // sizes="(min-width: 1024px) 66vw, 100vw"
-            alt={images[imageIndex]?.altText as string}
-            src={images[imageIndex]?.src as string}
+            alt={images[imageIndex].altText}
+            src={images[imageIndex].src}
             priority={true}
           />
         )}
 
-        {images.length > 1 ? (
+        {images.length > 1 && (
           <div className="absolute bottom-[15%] flex w-full justify-center">
             <div className="mx-auto flex h-11 items-center rounded-full border border-white bg-neutral-50/80 text-neutral-500 backdrop-blur dark:border-black dark:bg-neutral-900/80">
               <Link
@@ -63,10 +63,10 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
               </Link>
             </div>
           </div>
-        ) : null}
+        )}
       </div>
 
-      {images.length > 1 ? (
+      {images.length > 1 && (
         <ul className="my-12 flex items-center justify-center gap-2 overflow-auto py-1 lg:mb-0">
           {images.map((image, index) => {
             const isActive = index === imageIndex;
@@ -94,7 +94,7 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
             );
           })}
         </ul>
-      ) : null}
+      )}
     </>
   );
 }
