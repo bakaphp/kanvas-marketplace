@@ -4,7 +4,7 @@ import { Highlight } from 'react-instantsearch';
 
 export default function Hit({ hit }: { hit: any }) {
   return (
-    <Link href={'#'}>
+    <Link href={`/product/${hit.slug}`}>
       <div className='h-[440px] w-72 text-center rounded-md border-2  border-border-default'>
         <img
           src={hit.files?.[0]?.url ?? './default_image.svg'}
