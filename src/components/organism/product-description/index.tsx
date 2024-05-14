@@ -8,7 +8,7 @@ import { AddToCart } from '../cart/add-to-cart';
 function useProductDescription(product: any) {
   const variants = useMemo(() => {
     return product?.variants?.map((variant: any) => {
-      console.log(variant.channel, 'klk');
+      console.log(variant.channel);
       return {
         id: 'gid://shopify/ProductVariant/' + variant?.metadata?.shopify?.id,
         selectedOptions: [
@@ -17,7 +17,7 @@ function useProductDescription(product: any) {
             value: variant.name,
           },
         ],
-        availableForSale: variant?.channel?.quantity >= 1,
+        availableForSale: true,
         price: variant?.channel?.price,
         quantity: variant?.channel?.quantity,
       };
