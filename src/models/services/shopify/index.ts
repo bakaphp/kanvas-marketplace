@@ -78,6 +78,7 @@ export async function shopifyFetch<T>({
   variables?: ExtractVariables<T>;
 }): Promise<{ status: number; body: T } | never> {
   try {
+    console.log({endpoint, domain, key, query, variables})
     const result = await fetch(endpoint, {
       method: 'POST',
       headers: {
@@ -95,7 +96,7 @@ export async function shopifyFetch<T>({
 
     console.log({ shopifyRes: result });
     const body = await result.json();
-
+    console.log({ shopifyBody: body });
     if (body.errors) {
       throw body.errors[0];
     }
