@@ -28,21 +28,21 @@ export default function VariantSelector({
     return null;
   }
 
-  const combinations: Combination[] = variants.map((variant) => ({
+  const combinations: Combination[] = variants.map((variant: any) => ({
     id: variant.id,
     availableForSale: variant.availableForSale,
     // Adds key / value pairs for each variant (ie. "color": "Black" and "size": 'M").
     ...variant.selectedOptions.reduce(
-      (accumulator, option) => ({ ...accumulator, [option.name.toLowerCase()]: option.value }),
+      (accumulator: any, option: any) => ({ ...accumulator, [option.name.toLowerCase()]: option.value }),
       {}
     )
   }));
 
-  return options.map((option) => (
+  return options.map((option: any) => (
     <dl className="mb-8" key={option.id}>
       <dt className="mb-4 text-sm uppercase tracking-wide">{option.name}</dt>
       <dd className="flex flex-wrap gap-3">
-        {option.values.map((value) => {
+        {option.values.map((value: any) => {
           const optionNameLowerCase = option.name.toLowerCase();
 
           // Base option params on current params so we can preserve any other param state in the url.
@@ -64,7 +64,7 @@ export default function VariantSelector({
           // then all other sizes should be disabled.
           const filtered = Array.from(optionSearchParams.entries()).filter(([key, value]) =>
             options.find(
-              (option) => option.name.toLowerCase() === key && option.values.includes(value)
+              (option: any) => option.name.toLowerCase() === key && option.values.includes(value)
             )
           );
           const isAvailableForSale = combinations.find((combination) =>

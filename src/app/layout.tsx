@@ -1,5 +1,5 @@
 import { ReactNode, Suspense } from 'react';
-import ClientLayout from './client.layout';
+import ClientLayout from './client';
 import Navbar from '@/components/organism/navbar';
 // import { Open_Sans } from 'next/font/google';
 import './globals.css';

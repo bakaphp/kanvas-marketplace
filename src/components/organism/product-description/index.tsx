@@ -5,9 +5,9 @@ import { truncateText } from '@/models/interactions/truncate-text';
 import { Suspense, useMemo } from 'react';
 import { AddToCart } from '../cart/add-to-cart';
 
-function useProductDescription(product) {
+function useProductDescription(product: any) {
   const variants = useMemo(() => {
-    return product?.variants?.map((variant) => {
+    return product?.variants?.map((variant: any) => {
       return {
         id: 'gid://shopify/ProductVariant/' + variant?.metadata?.shopify?.id,
         selectedOptions: [
@@ -25,7 +25,7 @@ function useProductDescription(product) {
     {
       id: 'variant-selector',
       name: 'Select',
-      values: product.variants.map((variant) => variant.name), // Agrega más valores si es necesario
+      values: product.variants.map((variant: any) => variant.name), // Agrega más valores si es necesario
     },
     // Agrega más opciones según sea necesario
   ];

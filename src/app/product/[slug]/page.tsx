@@ -7,7 +7,7 @@ export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
 
-async function useProductPage(params) {
+async function useProductPage(params: any) {
   const { sdk } = useServerContext();
   const product = await sdk?.inventory.getProduct({
     first: 2,
@@ -38,6 +38,7 @@ export default async function ProductPage({ params }: { params: any }) {
               }
             >
               <Gallery
+              // @ts-ignore
                 images={models.product?.products?.data?.[0].files.data.map(
                   (image) => ({
                     src: image.url,
