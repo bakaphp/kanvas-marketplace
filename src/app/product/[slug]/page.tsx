@@ -4,8 +4,6 @@ import { useServerContext } from '@kanvas/phoenix';
 import { Suspense } from 'react';
 
 export const runtime = 'edge';
-export const dynamic = 'force-dynamic';
-export const dynamicParams = true;
 
 async function useProductPage(params: any) {
   const { sdk } = useServerContext();
