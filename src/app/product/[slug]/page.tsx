@@ -5,10 +5,9 @@ import { Suspense } from 'react';
 import Loading from './loading';
 import { translate } from '@/translate';
 
-
 export const runtime = 'edge';
 
-async function useProductPage(params: any) {
+async function useProductPage(params: { slug: string }) {
   const { sdk } = useServerContext();
   try {
     const product = await sdk?.inventory.getProduct({
@@ -16,9 +15,10 @@ async function useProductPage(params: any) {
       whereCondition: {
         column: 'SLUG',
         operator: 'EQ',
-        value: params?.slug ?? '',
+        value: params.slug,
       },
     });
+    console.log(product)
     return {
       models: {
         product,
@@ -34,7 +34,11 @@ async function useProductPage(params: any) {
   }
 }
 
-export default async function ProductPage({ params }: { params: any }) {
+export default async function ProductPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const { models } = await useProductPage(params);
   const productData =
     models.product?.products?.data?.[0] || ({ files: { data: [] } } as any);
