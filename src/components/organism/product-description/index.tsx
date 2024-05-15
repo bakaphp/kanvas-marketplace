@@ -2,7 +2,7 @@ import Price from '@/components/atoms/price';
 import Prose from '@/components/atoms/prose';
 import VariantSelector from '@/components/molecules/variant-selector';
 import { truncateText } from '@/models/interactions/truncate-text';
-import { Suspense, useMemo } from 'react';
+import { Suspense } from 'react';
 import { AddToCart } from '../cart/add-to-cart';
 
 function useProductDescription(product: any) {
@@ -41,6 +41,7 @@ function useProductDescription(product: any) {
       values: product?.variants?.map((variant: any) => variant.name),
     },
   ];
+
   return {
     models: {
       variants,
@@ -48,9 +49,14 @@ function useProductDescription(product: any) {
     },
   };
 }
-export async function ProductDescription({ product }: { product: any }) {
+
+export function ProductDescription({ product }: { product: any }) {
   const { models } = useProductDescription(product);
-  console.log(product)
+
+  if (!product) {
+    return <div>Loading product details...</div>;
+  }
+
   return (
     <>
       <div className='mb-6 flex flex-col border-b pb-6 dark:border-neutral-700'>
