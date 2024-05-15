@@ -61,12 +61,12 @@ export async function ProductDescription({ product }: { product: any }) {
         <p className='text-xs text-[#E5E7EB]'>+12% VAT Added</p>
       </div>
       <Suspense fallback={null}>
-        <VariantSelector options={models.options} variants={models.variants} />
+        <VariantSelector options={models?.options} variants={models?.variants} />
       </Suspense>
       <Suspense fallback={null}>
         <AddToCart
           variants={models.variants}
-          availableForSale={models.variants[0].availableForSale}
+          availableForSale={models.variants?.[0]?.availableForSale}
         />
       </Suspense>
     </>
