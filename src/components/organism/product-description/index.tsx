@@ -50,6 +50,7 @@ function useProductDescription(product: any) {
 }
 export async function ProductDescription({ product }: { product: any }) {
   const { models } = useProductDescription(product);
+  console.log(product)
   return (
     <>
       <div className='mb-6 flex flex-col border-b pb-6 dark:border-neutral-700'>

@@ -16,6 +16,8 @@ async function useProductPage(params: any) {
       value: params?.slug ?? '',
     },
   });
+
+  console.log(product)
   return {
     models: {
       product,
@@ -27,6 +29,7 @@ export default async function ProductPage({ params }: { params: any }) {
   const { models } = await useProductPage(params);
   const productData =
     models.product?.products?.data?.[0] || ({ files: { data: [] } } as any);
+    console.log({productData})
 
   return (
     <>
