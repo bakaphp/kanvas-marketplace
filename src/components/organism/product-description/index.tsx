@@ -8,7 +8,6 @@ import { AddToCart } from '../cart/add-to-cart';
 function useProductDescription(product: any) {
   const variants = useMemo(() => {
     return product?.variants?.map((variant: any) => {
-      console.log(variant.channel);
       return {
         id: 'gid://shopify/ProductVariant/' + variant?.metadata?.shopify?.id,
         selectedOptions: [
@@ -22,15 +21,14 @@ function useProductDescription(product: any) {
         quantity: variant?.channel?.quantity,
       };
     });
-  }, []);
+  }, []) || [];
 
   const options = [
     {
       id: 'variant-selector',
       name: 'Select',
-      values: product.variants.map((variant: any) => variant.name), // Agrega más valores si es necesario
+      values: product?.variants?.map((variant: any) => variant?.name),
     },
-    // Agrega más opciones según sea necesario
   ];
   return {
     models: {
@@ -41,7 +39,6 @@ function useProductDescription(product: any) {
 }
 export async function ProductDescription({ product }: { product: any }) {
   const { models } = useProductDescription(product);
-  console.log(models.variants[0].price);
   return (
     <>
       <div className='mb-6 flex flex-col border-b pb-6 dark:border-neutral-700'>
@@ -57,7 +54,7 @@ export async function ProductDescription({ product }: { product: any }) {
 
       <div>
         <Price
-          amount={models.variants[0].price}
+          amount={models.variants?.[0].price}
           className='text-2xl font-bold'
           currencyCode='DOP'
         />
