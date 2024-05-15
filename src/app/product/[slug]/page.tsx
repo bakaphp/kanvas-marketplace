@@ -25,7 +25,8 @@ async function useProductPage(params: any) {
 
 export default async function ProductPage({ params }: { params: any }) {
   const { models } = await useProductPage(params);
-  const productData = models.product?.products?.data?.[0] || [] as any;
+  const productData =
+    models.product?.products?.data?.[0] || ({ files: { data: [] } } as any);
 
   return (
     <>

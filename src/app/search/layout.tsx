@@ -1,11 +1,8 @@
 'use client';
-import FilterItem from '@/components/molecules/filter-item';
-import { NumericMenu } from '@/components/molecules/numeric-menu';
 import FilterSidebar from '@/components/organism/filter-sidebar';
 import { translate } from '@/translate';
 import { Atoms } from '@kanvas/phoenix';
 import { Suspense } from 'react';
-import { RefinementList, ToggleRefinement } from 'react-instantsearch';
 
 export default function SearchLayout({
   children,
