@@ -28,9 +28,8 @@ function useProductDescription(product: any) {
     {
       id: 'variant-selector',
       name: 'Select',
-      values: product.variants.map((variant: any) => variant.name), // Agrega más valores si es necesario
+      values: product?.variants?.map((variant: any) => variant.name),
     },
-    // Agrega más opciones según sea necesario
   ];
   return {
     models: {
@@ -41,7 +40,6 @@ function useProductDescription(product: any) {
 }
 export async function ProductDescription({ product }: { product: any }) {
   const { models } = useProductDescription(product);
-  console.log(models.variants[0].price);
   return (
     <>
       <div className='mb-6 flex flex-col border-b pb-6 dark:border-neutral-700'>
