@@ -19,7 +19,20 @@ function useProductDescription(product: any) {
       price: variant?.channel?.price,
       quantity: variant?.channel?.quantity,
     };
-  });
+  }) ?? [
+    {
+      id: 'default',
+      price: '0',
+      availableForSale: false,
+      quantity: 0,
+      selectedOptions: [
+        {
+          name: 'select',
+          value: '',
+        },
+      ],
+    },
+  ];
 
   const options = [
     {
@@ -52,7 +65,7 @@ export async function ProductDescription({ product }: { product: any }) {
 
       <div>
         <Price
-          amount={models.variants[0].price}
+          amount={models.variants?.[0].price}
           className='text-2xl font-bold'
           currencyCode='DOP'
         />
