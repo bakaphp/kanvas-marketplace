@@ -42,13 +42,13 @@ export async function ProductDescription({ product }: { product: any }) {
   return (
     <>
       <div className='mb-6 flex flex-col border-b pb-6 dark:border-neutral-700'>
-        <h1 className='mb-2 text-4xl font-bold'>{product?.title}</h1>
+        <h1 className='mb-2 text-4xl font-bold'>{product.title}</h1>
       </div>
 
-      {product?.descriptionHtml ? (
+      {product.descriptionHtml ? (
         <Prose
           className='mb-6 text-sm leading-tight dark:text-white/[60%]'
-          html={truncateText(product?.descriptionHtml, 500)}
+          html={truncateText(product.descriptionHtml, 500)}
         />
       ) : null}
 
@@ -65,8 +65,8 @@ export async function ProductDescription({ product }: { product: any }) {
       </Suspense>
       <Suspense fallback={null}>
         <AddToCart
-          variants={models?.variants}
-          availableForSale={models?.variants?.[0]?.availableForSale}
+          variants={models.variants}
+          availableForSale={models.variants?.[0]?.availableForSale}
         />
       </Suspense>
     </>
