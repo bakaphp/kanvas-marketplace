@@ -45,15 +45,13 @@ export default async function ProductPage({ params }: { params: any }) {
           </div>
 
           <div className='basis-full lg:basis-2/6'>
-            <Suspense fallback={<Loading />}>
-              <ProductDescription
-                product={{
-                  title: productData?.name,
-                  descriptionHtml: productData?.description,
-                  variants: productData?.variants,
-                }}
-              />
-            </Suspense>
+            <ProductDescription
+              product={{
+                title: productData?.name,
+                descriptionHtml: productData?.description,
+                variants: productData?.variants,
+              }}
+            />
           </div>
         </div>
       </div>
