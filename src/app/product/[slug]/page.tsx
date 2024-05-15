@@ -4,13 +4,14 @@ import { useServerContext } from '@kanvas/phoenix';
 import { Suspense } from 'react';
 import Loading from './loading';
 import { translate } from '@/translate';
+import { app } from '@/models/services/kanvas';
 
 export const runtime = 'edge';
 
 async function useProductPage(params: { slug: string }) {
-  const { sdk } = useServerContext();
+
   try {
-    const product = await sdk?.inventory.getProduct({
+    const product = await app.inventory.getProduct({
       first: 1,
       whereCondition: {
         column: 'SLUG',
