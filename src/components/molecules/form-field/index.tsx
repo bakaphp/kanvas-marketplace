@@ -18,7 +18,7 @@ export function FormField({
         onChange={onChange}
         onBlur={onBlur}
         placeholder={placeholder}
-        className="rounded-md p-2 gap-[10px] bg-transparent border-white border outline-none placeholder:text-white"
+        className="rounded-md p-2 gap-[10px] bg-transparent border-default border outline-none placeholder:text-white"
         type={type ?? "text"}
         name={name}
         id={`form-field-${name}`}

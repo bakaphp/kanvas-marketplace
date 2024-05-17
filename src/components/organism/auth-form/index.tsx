@@ -48,7 +48,7 @@ export default function AuthForm({
       {header && <AuthFormHeader title={header} />}
       <form
         onSubmit={onSubmit}
-        className="rounded-md border border-white py-[50px] px-6 flex flex-col gap-10"
+        className="rounded-md border border-default py-[50px] px-6 flex flex-col gap-10"
       >
         <h5 className="text-2xl font-bold text-white">{title}</h5>
         <div className="flex flex-col gap-3 w-[350px]">
@@ -65,7 +65,7 @@ export default function AuthForm({
               {forgotPassword && (
                 <Atoms.Button.Link
                   type="button"
-                  className="text-blue-400 py-[10px] px-0 text-sm font-normal"
+                  className="text-primary-100 py-[10px] px-0 text-sm font-normal"
                 >
                   {forgotPassword.label}
                 </Atoms.Button.Link>
@@ -75,7 +75,7 @@ export default function AuthForm({
 
           <Atoms.Button.Solid
             type="submit"
-            className="flex bg-blue-400 justify-center items-center py-[10px] px-[14px] rounded-md text-sm font-normal w-full disabled:opacity-70"
+            className="flex bg-primary-100 justify-center items-center py-[10px] px-[14px] rounded-md text-sm font-normal w-full disabled:opacity-70"
             disabled={isSubmitting || !isValid}
           >
             {submitButton.label}
@@ -85,7 +85,7 @@ export default function AuthForm({
               {bottomSection.text && <p>{bottomSection.text}</p>}
               <Atoms.Button.Link
                 type="button"
-                className="text-blue-400 py-[10px] px-[14px] text-sm font-normal"
+                className="text-primary-100 py-[10px] px-[14px] text-sm font-normal"
               >
                 {bottomSection.link.label}
               </Atoms.Button.Link>
