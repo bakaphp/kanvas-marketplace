@@ -76,7 +76,7 @@ export default function AuthForm({
           <Atoms.Button.Solid
             type="submit"
             className="flex bg-primary-100 justify-center items-center py-[10px] px-[14px] rounded-md text-sm font-normal w-full disabled:opacity-70"
-            disabled={isSubmitting || !isValid}
+            disabled={isSubmitting}
           >
             {submitButton.label}
           </Atoms.Button.Solid>
