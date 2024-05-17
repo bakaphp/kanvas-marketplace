@@ -1,15 +1,39 @@
 "use client";
-import { useFormik } from "formik";
-import { string } from "yup";
+import { FormikHelpers, useFormik } from "formik";
+import * as yup from "yup";
 import AuthForm from "@/components/organism/auth-form";
 import { useRouter } from "next/navigation";
 import { login } from "@/models/api/login";
 
-const emailSchema = string().required().email();
-const passwordSchema = string().required();
+const validationSchema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().required(),
+});
+
+type SignInFormValues = yup.InferType<typeof validationSchema>;
+
+const initialValues: SignInFormValues = {
+  email: "",
+  password: "",
+};
 
 function useSignInPage() {
   const router = useRouter();
+
+  async function onSubmit(
+    { email, password }: SignInFormValues,
+    { setSubmitting }: FormikHelpers<SignInFormValues>
+  ) {
+    try {
+      await login(email, password);
+      router.push("/search");
+    } catch (e: any) {
+      alert(e.message);
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   const {
     handleBlur,
     handleChange,
@@ -20,30 +44,13 @@ function useSignInPage() {
     isSubmitting,
     isValid,
   } = useFormik({
-    initialValues: { email: "", password: "" },
-    onSubmit: async ({ email, password }, { setSubmitting }) => {
-      try {
-        await login(email, password);
-        router.push("/search");
-      } catch (e: any) {
-        alert(e.message);
-      } finally {
-        setSubmitting(false);
-      }
-    },
-    validate: ({ email, password }) => {
-      try {
-        emailSchema.validateSync(email);
-      } catch (e: any) {
-        return { email: e.message };
-      }
-      try {
-        passwordSchema.validateSync(password);
-      } catch (e: any) {
-        return { password: e.message };
-      }
-    },
+    initialValues,
+    validateOnBlur: false,
+    validateOnChange: false,
+    validationSchema,
+    onSubmit,
   });
+
   return {
     models: {
       isValid,
