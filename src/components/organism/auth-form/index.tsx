@@ -1,3 +1,4 @@
+"use client";
 import { FormCheckbox } from "@/components/molecules/form-checkbox";
 import { FormField, FormFieldProps } from "@/components/molecules/form-field";
 import { Atoms } from "@kanvas/phoenix";

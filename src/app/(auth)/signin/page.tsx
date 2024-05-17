@@ -3,11 +3,13 @@ import { useFormik } from "formik";
 import { string } from "yup";
 import AuthForm from "@/components/organism/auth-form";
 import { login } from "@/models/services/kanvas/mutations/auth";
+import { useRouter } from "next/navigation";
 
 const emailSchema = string().required().email();
 const passwordSchema = string().required();
 
 function useSignInPage() {
+  const router = useRouter();
   const {
     handleBlur,
     handleChange,
@@ -22,6 +24,7 @@ function useSignInPage() {
     onSubmit: async ({ email, password }, { setSubmitting }) => {
       try {
         await login(email, password);
+        router.push("/search");
       } catch (e: any) {
         alert(e.message);
       } finally {
