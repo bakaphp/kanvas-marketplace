@@ -4,6 +4,7 @@ import * as yup from "yup";
 import AuthForm from "@/components/organism/auth-form";
 import { useRouter } from "next/navigation";
 import { login } from "@/models/api/login";
+import { translate } from "@/translate";
 
 const validationSchema = yup.object().shape({
   email: yup.string().email().required(),
@@ -72,18 +73,19 @@ export default function SignInPage() {
     models: { isValid, isSubmitting, values, errors, touched },
     operations: { handleBlur, handleChange, handleSubmit },
   } = useSignInPage();
+
   return (
     <main className="flex flex-col gap-[50px] items-center">
       <AuthForm
-        header="Sign in to your account"
+        header={translate("signin.title")}
         isValid={isValid}
         isSubmitting={isSubmitting}
         onSubmit={handleSubmit}
-        title="Sign in"
+        title={translate("signin.form.title")}
         formFields={[
           {
-            label: "Email",
-            placeholder: "Add your email",
+            label: translate("signin.form.email.label"),
+            placeholder: translate("signin.form.email.placeholder"),
             name: "email",
             type: "email",
             value: values.email,
@@ -92,8 +94,8 @@ export default function SignInPage() {
             onBlur: handleBlur,
           },
           {
-            label: "Password",
-            placeholder: "Add your password",
+            label: translate("signin.form.password.label"),
+            placeholder: translate("signin.form.password.placeholder"),
             name: "password",
             type: "password",
             value: values.password,
@@ -103,20 +105,20 @@ export default function SignInPage() {
             onBlur: handleBlur,
           },
         ]}
-        submitButton={{ label: "Login" }}
+        submitButton={{ label: translate("signin.form.submit") }}
         bottomSection={{
-          text: "Don't have an account?",
+          text: translate("signin.form.noAccount"),
           link: {
             href: "/",
-            label: "Sign up",
+            label: translate("signin.form.signUp"),
           },
         }}
         forgotPassword={{
           href: "/",
-          label: "Forgot your password?",
+          label: translate("signin.form.forgotPassword"),
         }}
         rememberMe={{
-          label: "Remember me",
+          label: translate("signin.form.rememberMe"),
         }}
       />
     </main>
