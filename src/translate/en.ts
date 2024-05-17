@@ -42,6 +42,25 @@ export default {
     'login-validation': 'Invalid email or password',
     'display-name-label': 'Display Name',
   },
+  signin: {
+    title: 'Sign in to your account',
+    form: {
+      title: 'Sign in',
+      email: {
+        label: 'Email',
+        placeholder: 'Add your email',
+      },
+      password: {
+        label: 'Password',
+        placeholder: 'Add your password',
+      },
+      submit: 'Login',
+      noAccount: "Don't have an account?",
+      signUp: 'Sign up',
+      forgotPassword: 'Forgot your password?',
+      rememberMe: 'Remember me',
+    },
+  },
   search: {
     title: 'Search',
     filters: 'FILTERS',

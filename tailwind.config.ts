@@ -1,4 +1,4 @@
-const plugin = require('tailwindcss/plugin');
+const plugin = require("tailwindcss/plugin");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -41,10 +41,11 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
-        'primary-background': '#111827',
-        border: {
-          default: '#374151',
+        primary: {
+          [100]: "#3574B6",
         },
+        default: "#374151",
+        "primary-background": "#111827",
         background: {
           100: '#111827',
         },
@@ -118,7 +119,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-geist-sans)'],
+        sans: ["var(--font-geist-sans)"],
       },
       keyframes: {
         fadeIn: {
@@ -126,19 +127,19 @@ module.exports = {
           to: { opacity: 1 },
         },
         marquee: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-100%)' },
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
         },
         blink: {
-          '0%': { opacity: 0.2 },
-          '20%': { opacity: 1 },
-          '100% ': { opacity: 0.2 },
+          "0%": { opacity: 0.2 },
+          "20%": { opacity: 1 },
+          "100% ": { opacity: 0.2 },
         },
       },
       animation: {
-        fadeIn: 'fadeIn .3s ease-in-out',
-        carousel: 'marquee 60s linear infinite',
-        blink: 'blink 1.4s both infinite',
+        fadeIn: "fadeIn .3s ease-in-out",
+        carousel: "marquee 60s linear infinite",
+        blink: "blink 1.4s both infinite",
       },
     },
   },
@@ -154,14 +155,14 @@ module.exports = {
       matchUtilities(
         {
           // @ts-ignore
-          'animation-delay': (value) => {
+          "animation-delay": (value) => {
             return {
-              'animation-delay': value,
+              "animation-delay": value,
             };
           },
         },
         {
-          values: theme('transitionDelay'),
+          values: theme("transitionDelay"),
         }
       );
     }),
