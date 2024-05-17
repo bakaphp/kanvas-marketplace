@@ -1,8 +1,9 @@
 "use client";
 import { FormCheckbox } from "@/components/molecules/form-checkbox";
-import { FormField, FormFieldProps } from "@/components/molecules/form-field";
+import { FormField } from "@/components/molecules/form-field";
 import { Atoms } from "@kanvas/phoenix";
 import { AuthFormHeader } from "./auth-form-header";
+import { FormFieldProps } from "@/models/types/forms/form-field";
 
 type AuthFormProps = {
   onSubmit: (arg: any) => void;

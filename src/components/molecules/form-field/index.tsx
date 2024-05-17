@@ -1,20 +1,4 @@
-import { DetailedHTMLProps, InputHTMLAttributes } from "react";
-
-type InputProps = DetailedHTMLProps<
-  InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
->;
-
-export type FormFieldProps = {
-  label: string;
-  type?: InputProps["type"];
-  name?: string;
-  error?: string;
-  placeholder?: string;
-  value?: string;
-  onChange?: (arg: any) => void;
-  onBlur?: (arg: any) => void;
-};
+import { FormFieldProps } from "@/models/types/forms/form-field";
 
 export function FormField({
   type,

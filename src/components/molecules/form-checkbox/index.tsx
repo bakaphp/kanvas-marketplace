@@ -1,7 +1,4 @@
-export type FormCheckboxProps = {
-  label: string;
-  name?: string;
-};
+import { FormCheckboxProps } from "@/models/types/forms/form-checkbox";
 
 export function FormCheckbox({ label, name }: FormCheckboxProps) {
   return (

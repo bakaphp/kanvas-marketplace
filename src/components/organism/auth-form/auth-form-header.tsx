@@ -1,4 +1,4 @@
-export type AuthFormHeaderProps = {
+type AuthFormHeaderProps = {
   title: string;
 };
 
