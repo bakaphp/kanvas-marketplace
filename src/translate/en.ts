@@ -1,17 +1,54 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-    hi: "hi",
-    general: {
-        "load-fail": "Failed to load product data. Please try again later."
+  hi: 'hi',
+  general: {
+    'load-fail': 'Failed to load product data. Please try again later.',
+    update: 'Update',
+  },
+  'user-overview': {
+    title: 'Personal Information',
+    picture: 'Profile Picture',
+  },
+  form: {
+    'first-name-label': 'First Name',
+    'first-name-placeholder': 'Add first name',
+    'last-name-label': 'Last Name',
+    'last-name-placeholder': 'Add last name',
+    'email-label': 'Email',
+    'email-placeholder': 'Enter your email address',
+    'password-label': 'Password',
+    'password-placeholder': 'Enter your password',
+    'new-password-label': 'New Password',
+    'new-password-placeholder': 'Enter your new password',
+    'repeat-new-password-label': 'Repeat new password',
+    'repeat-new-password-placeholder': 'Repeat password',
+    'change-password': 'Change Password',
+    'current-password': 'Current Password',
+    'update-password': 'Update Password',
+    'current-password-label': 'Current Password',
+    'current-password-placeholder': 'Enter your current password',
+    'confirm-password': 'Confirm Password',
+    'confirm-password-placeholder': 'Confirm your new password',
+    'select-landing-label': 'Select Landing',
+    'phone-number-label': 'Phone Number',
+    'forgot-password': 'Forgot your password?',
+    'create-password': 'Create password',
+    'phone-number-placeholder': 'Add your phone number',
+    'company-name-label': 'Company Name',
+    'company-name-placeholder': 'Enter business name',
+    'description-label': 'Description',
+    'description-placeholder': 'Add description',
+    'confirm-password-validation': 'Password must match',
+    'login-validation': 'Invalid email or password',
+    'display-name-label': 'Display Name',
+  },
+  search: {
+    title: 'Search',
+    filters: 'FILTERS',
+    sidebar: {
+      year: 'Year',
+      company: 'Company',
+      price: 'Price',
     },
-    search: {
-        title: "Search",
-        filters: "FILTERS",
-        sidebar: {
-            year: "Year",
-            company: "Company",
-            price: "Price"
-        }
-
-    }
-}
+  },
+};

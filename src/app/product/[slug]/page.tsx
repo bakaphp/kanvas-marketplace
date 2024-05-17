@@ -1,6 +1,5 @@
 import { Gallery } from '@/components/organism/gallery';
 import { ProductDescription } from '@/components/organism/product-description';
-import { useServerContext } from '@kanvas/phoenix';
 import { Suspense } from 'react';
 import Loading from './loading';
 import { translate } from '@/translate';
