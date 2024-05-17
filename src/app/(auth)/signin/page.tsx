@@ -2,8 +2,8 @@
 import { useFormik } from "formik";
 import { string } from "yup";
 import AuthForm from "@/components/organism/auth-form";
-import { login } from "@/models/services/kanvas/mutations/auth";
 import { useRouter } from "next/navigation";
+import { login } from "@/models/api/login";
 
 const emailSchema = string().required().email();
 const passwordSchema = string().required();

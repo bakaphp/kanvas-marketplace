@@ -1,7 +1,7 @@
 "use server";
 
 import { cookies } from "next/headers";
-import { app } from "..";
+import { app } from "../services/kanvas";
 
 export async function login(email: string, password: string) {
   "use server";
