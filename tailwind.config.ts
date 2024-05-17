@@ -49,6 +49,9 @@ module.exports = {
         background: {
           100: '#111827',
         },
+        border: {
+          default: "#374151"
+        },
         base: {
           primary: {
             100: '#111827',

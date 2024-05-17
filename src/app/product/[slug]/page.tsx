@@ -18,7 +18,6 @@ async function useProductPage(params: { slug: string }) {
         value: params.slug,
       },
     });
-    console.log(product)
     return {
       models: {
         product,

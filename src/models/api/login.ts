@@ -9,6 +9,6 @@ export async function login(email: string, password: string) {
   cookies().set("token", results.token, {
     expires: new Date(results.token_expires),
     path: "/",
-    httpOnly: true,
+    httpOnly: false,
   });
 }

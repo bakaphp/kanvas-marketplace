@@ -17,7 +17,6 @@ interface Props {
 export function AccountSidebar({ items }: Props) {
   const path = usePathname();
   const [selectedKey, setSelectedKey] = useState(path);
-  console.log(path);
   useEffect(() => {
     setSelectedKey(path);
   }, [path]);

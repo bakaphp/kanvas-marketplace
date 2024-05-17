@@ -78,7 +78,6 @@ export async function shopifyFetch<T>({
   variables?: ExtractVariables<T>;
 }): Promise<{ status: number; body: T } | never> {
   try {
-    console.log({endpoint, domain, key, query, variables})
     const result = await fetch(endpoint, {
       method: 'POST',
       headers: {
@@ -95,7 +94,7 @@ export async function shopifyFetch<T>({
     });
 
     const body = await result.json();
-    console.log({ shopifyBody: body });
+
     if (body.errors) {
       throw body.errors[0];
     }
@@ -221,7 +220,7 @@ export async function createCart(): Promise<Cart> {
     query: createCartMutation,
     cache: 'no-store',
   });
-  console.log({ resCartCreate: res });
+
   return reshapeCart(res.body.data.cartCreate.cart);
 }
 
@@ -237,7 +236,7 @@ export async function addToCart(
     },
     cache: 'no-store',
   });
-  console.log({ res, cartId, lines });
+
   return reshapeCart(res.body.data.cartLinesAdd.cart);
 }
 
@@ -323,7 +322,7 @@ export async function getCollectionProducts({
   });
 
   if (!res.body.data.collection) {
-    console.log(`No collection found for \`${collection}\``);
+    (`No collection found for \`${collection}\``);
     return [];
   }
 
