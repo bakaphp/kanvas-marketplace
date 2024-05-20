@@ -15,7 +15,7 @@ export default async function AccountPage() {
   const { models } = await useAccountPage();
   return (
     <>
-      <ProfileForm  profile={models.user}/>
+      <ProfileForm profile={models.user} />
     </>
   );
 }
