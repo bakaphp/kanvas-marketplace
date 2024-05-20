@@ -4,6 +4,8 @@ export default {
   general: {
     'load-fail': 'Failed to load product data. Please try again later.',
     update: 'Update',
+    userUpdated: 'The user has been successfully updated',
+    userUpdateFailed: 'An error occurred while trying to update the user.',
   },
   'user-overview': {
     title: 'Personal Information',
