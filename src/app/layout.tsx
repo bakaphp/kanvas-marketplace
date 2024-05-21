@@ -4,7 +4,7 @@ import Navbar from '@/components/organism/navbar';
 import { Open_Sans } from 'next/font/google';
 import './globals.css';
 import { ServerCoreStore } from '@kanvas/phoenix';
-import { app } from '@/models/services/kanvas';
+import { adminClient } from '@/models/services/kanvas/admin';
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
@@ -33,7 +33,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang='en' className={OpenSans.className}>
-      <ServerCoreStore sdk={app}>
+      <ServerCoreStore sdk={adminClient}>
         <body className='bg-neutral-50 text-black selection:bg-teal-300 dark:bg-primary-background dark:text-white dark:selection:bg-pink-500 dark:selection:text-white'>
           <ClientLayout>
             <Navbar />

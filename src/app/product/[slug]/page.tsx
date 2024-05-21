@@ -3,7 +3,7 @@ import { ProductDescription } from '@/components/organism/product-description';
 import { Suspense } from 'react';
 import Loading from './loading';
 import { translate } from '@/translate';
-import { app } from '@/models/services/kanvas';
+import { adminClient as app } from '@/models/services/kanvas/admin';
 
 export const runtime = 'edge';
 
