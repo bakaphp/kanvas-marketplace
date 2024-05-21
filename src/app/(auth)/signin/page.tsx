@@ -27,7 +27,7 @@ function useSignInPage() {
   ) {
     try {
       await login(email, password);
-      router.push("/search");
+      router.push("/account");
     } catch (e: any) {
       alert(e.message);
     } finally {

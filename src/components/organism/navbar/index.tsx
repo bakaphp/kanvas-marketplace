@@ -1,38 +1,40 @@
-
 import Link from 'next/link';
 import { Suspense } from 'react';
 
 import Cart from '../cart';
 import OpenCart from '../cart/open-cart';
 import MobileMenu from './mobile-menu';
-import Search, {SearchSkeleton} from './search';
+import Search, { SearchSkeleton } from './search';
 import LogoSquare from '@/components/atoms/icons/logo-square';
 const { SITE_NAME } = process.env;
 
 export default async function Navbar() {
-  const menu = [] as any
+  const menu = [] as any;
   return (
-    <nav className="relative flex items-center justify-between p-4 lg:px-6">
-      <div className="block flex-none md:hidden">
+    <nav className='relative flex items-center justify-between p-4 lg:px-6'>
+      <div className='block flex-none md:hidden'>
         <Suspense fallback={null}>
           <MobileMenu menu={menu} />
         </Suspense>
       </div>
-      <div className="flex w-full items-center">
-        <div className="flex w-full md:w-1/3">
-          <Link href="/" className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6">
+      <div className='flex w-full items-center'>
+        <div className='flex w-full md:w-1/3'>
+          <Link
+            href='/'
+            className='mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6'
+          >
             <LogoSquare />
-            <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block">
+            <div className='ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block'>
               {SITE_NAME}
             </div>
           </Link>
           {menu.length ? (
-            <ul className="hidden gap-6 text-sm md:flex md:items-center">
+            <ul className='hidden gap-6 text-sm md:flex md:items-center'>
               {menu.map((item: any) => (
                 <li key={item.title}>
                   <Link
                     href={item.path}
-                    className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                    className='text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300'
                   >
                     {item.title}
                   </Link>
@@ -41,12 +43,16 @@ export default async function Navbar() {
             </ul>
           ) : null}
         </div>
-        <div className="hidden justify-center md:flex md:w-1/3">
+        <div className='hidden justify-center md:flex md:w-1/3'>
           <Suspense fallback={<SearchSkeleton />}>
-            <Search  />
+            <Search />
           </Suspense>
         </div>
-        <div className="flex justify-end md:w-1/3">
+        <div className='flex justify-end md:w-1/3'>
+          <Link className=' mr-3 mt-3 text-sm' href={'/signin'}>
+            Sign In
+          </Link>
+
           <Suspense fallback={<OpenCart />}>
             <Cart />
           </Suspense>

@@ -1,6 +1,5 @@
 'use server';
-
-import { app } from '@/models/services/kanvas';
+import { adminClient } from '@/models/services/kanvas/admin';
 
 type params = {
   email?: string;
@@ -12,7 +11,7 @@ export async function updateUserData(
   id: number,
   { email, firstname, lastname, phone }: params
 ) {
-  const response = await app.users.updateUserData(id, {
+  const response = await adminClient.users.updateUserData(id, {
     firstname,
     lastname,
     phone_number: phone ?? '',

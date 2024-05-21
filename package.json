@@ -30,6 +30,7 @@
     "react-hot-toast": "^2.4.1",
     "react-instantsearch": "^7.7.2",
     "react-instantsearch-dom": "^6.40.4",
+    "react-use": "^17.5.0",
     "yup": "^1.4.0"
   },
   "devDependencies": {
