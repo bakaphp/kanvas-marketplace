@@ -1,10 +1,10 @@
-"use client";
-import { FormikHelpers, useFormik } from "formik";
-import * as yup from "yup";
-import AuthForm from "@/components/organism/auth-form";
-import { useRouter } from "next/navigation";
-import { login } from "@/models/api/login";
-import { translate } from "@/translate";
+'use client';
+import { FormikHelpers, useFormik } from 'formik';
+import * as yup from 'yup';
+import AuthForm from '@/components/organism/auth-form';
+import { useRouter } from 'next/navigation';
+import { login } from '@/models/api/login';
+import { translate } from '@/translate';
 
 const validationSchema = yup.object().shape({
   email: yup.string().email().required(),
@@ -14,8 +14,8 @@ const validationSchema = yup.object().shape({
 type SignInFormValues = yup.InferType<typeof validationSchema>;
 
 const initialValues: SignInFormValues = {
-  email: "",
-  password: "",
+  email: '',
+  password: '',
 };
 
 function useSignInPage() {
@@ -27,7 +27,7 @@ function useSignInPage() {
   ) {
     try {
       await login(email, password);
-      router.push("/account");
+      router.push('/account');
     } catch (e: any) {
       alert(e.message);
     } finally {
@@ -75,50 +75,49 @@ export default function SignInPage() {
   } = useSignInPage();
 
   return (
-    <main className="flex flex-col gap-[50px] items-center">
+    <main className='flex flex-col gap-[50px] items-center'>
       <AuthForm
-        header={translate("signin.title")}
+        header={translate('signin.title')}
         isValid={isValid}
         isSubmitting={isSubmitting}
         onSubmit={handleSubmit}
-        title={translate("signin.form.title")}
+        title={translate('signin.form.title')}
         formFields={[
           {
-            label: translate("signin.form.email.label"),
-            placeholder: translate("signin.form.email.placeholder"),
-            name: "email",
-            type: "email",
+            label: translate('signin.form.email.label'),
+            placeholder: translate('signin.form.email.placeholder'),
+            name: 'email',
+            type: 'email',
             value: values.email,
-            error: errors.email && touched.email ? errors.email : undefined,
+            error: errors.email,
             onChange: handleChange,
             onBlur: handleBlur,
           },
           {
-            label: translate("signin.form.password.label"),
-            placeholder: translate("signin.form.password.placeholder"),
-            name: "password",
-            type: "password",
+            label: translate('signin.form.password.label'),
+            placeholder: translate('signin.form.password.placeholder'),
+            name: 'password',
+            type: 'password',
             value: values.password,
-            error:
-              errors.password && touched.password ? errors.password : undefined,
+            error: errors.password,
             onChange: handleChange,
             onBlur: handleBlur,
           },
         ]}
-        submitButton={{ label: translate("signin.form.submit") }}
+        submitButton={{ label: translate('signin.form.submit') }}
         bottomSection={{
-          text: translate("signin.form.noAccount"),
+          text: translate('signin.form.noAccount'),
           link: {
-            href: "/",
-            label: translate("signin.form.signUp"),
+            href: '/register',
+            label: translate('signin.form.signUp'),
           },
         }}
         forgotPassword={{
-          href: "/",
-          label: translate("signin.form.forgotPassword"),
+          href: '/',
+          label: translate('signin.form.forgotPassword'),
         }}
         rememberMe={{
-          label: translate("signin.form.rememberMe"),
+          label: translate('signin.form.rememberMe'),
         }}
       />
     </main>
