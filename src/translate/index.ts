@@ -20,15 +20,24 @@ interface TranslateOptions {
   interpolate?: Interpolate;
 }
 
-export const translate = (scope: string, options?: TranslateOptions) =>
+type En = typeof en;
+type Leaves<T> =
+  T extends Array<infer U>
+    ? `${number}.${Leaves<U>}` | `[${number}].${Leaves<U>}`
+    : T extends object
+      ? {
+          [K in keyof T]: `${Exclude<K, symbol>}${Leaves<T[K]> extends never ? '' : `.${Leaves<T[K]>}`}`;
+        }[keyof T]
+      : never;
+      
+export const translate = (scope: Leaves<En>, options?: TranslateOptions) =>
   i18n.t(scope, { ...options, ...options?.interpolate } as any);
-
 declare module 'i18n-js' {
   // eslint-disable-next-line no-unused-vars
   interface CustomTypeOptions {
     defaultNS: 'en';
     resources: {
-      en: typeof en;
+      en: En;
     };
   }
 }
