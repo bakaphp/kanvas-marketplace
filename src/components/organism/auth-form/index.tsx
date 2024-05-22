@@ -4,6 +4,7 @@ import { FormField } from "@/components/molecules/form-field";
 import { Atoms } from "@kanvas/phoenix";
 import { AuthFormHeader } from "./auth-form-header";
 import { FormFieldProps } from "@/models/types/forms/form-field";
+import Link from "next/link";
 
 type AuthFormProps = {
   onSubmit: (arg: any) => void;
@@ -41,7 +42,6 @@ export default function AuthForm({
   submitButton,
   onSubmit,
   isSubmitting,
-  isValid,
 }: AuthFormProps) {
   return (
     <>
@@ -83,12 +83,12 @@ export default function AuthForm({
           {bottomSection && (
             <div className="flex items-center w-full justify-start text-sm font-normal">
               {bottomSection.text && <p>{bottomSection.text}</p>}
-              <Atoms.Button.Link
-                type="button"
+              <Link
+                href={bottomSection.link.href}
                 className="text-primary-100 py-[10px] px-[14px] text-sm font-normal"
               >
                 {bottomSection.link.label}
-              </Atoms.Button.Link>
+              </Link>
             </div>
           )}
         </div>
