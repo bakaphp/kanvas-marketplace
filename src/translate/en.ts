@@ -67,6 +67,14 @@ export default {
     title: 'Create your account',
     form: {
       title: 'Sign up',
+      firstname: {
+        label: 'Firstname',
+        placeholder: 'Add your firstname',
+      },
+      lastname: {
+        label: 'Lastname',
+        placeholder: 'Add your lastname',
+      },
       email: {
         label: 'Email',
         placeholder: 'EJ: myexample@gmail.com',

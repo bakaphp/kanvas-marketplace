@@ -3,6 +3,8 @@
 import { app } from '../services/kanvas';
 
 type RegisterPayload = {
+  firstname: string;
+  lastname: string;
   email: string;
   password: string;
   passwordConfirmation: string;
@@ -10,6 +12,8 @@ type RegisterPayload = {
 
 export async function register({
   email,
+  firstname,
+  lastname,
   password,
   passwordConfirmation,
 }: RegisterPayload) {
@@ -17,7 +21,7 @@ export async function register({
     email,
     password,
     password_confirmation: passwordConfirmation,
-    firstname: 'NONE',
-    lastname: 'NONE',
+    firstname,
+    lastname,
   });
 }

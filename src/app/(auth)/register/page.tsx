@@ -7,6 +7,8 @@ import { translate } from '@/translate';
 import { register } from '@/models/api/register';
 
 const validationSchema = yup.object().shape({
+  firstname: yup.string().required(),
+  lastname: yup.string().required(),
   email: yup.string().email().required(),
   password: yup.string().required(),
   passwordConfirmation: yup.string().required(),
@@ -15,6 +17,8 @@ const validationSchema = yup.object().shape({
 type RegisterFormValues = yup.InferType<typeof validationSchema>;
 
 const initialValues: RegisterFormValues = {
+  firstname: '',
+  lastname: '',
   email: '',
   password: '',
   passwordConfirmation: '',
@@ -85,6 +89,26 @@ export default function RegisterPage() {
         onSubmit={handleSubmit}
         title={translate('register.form.title')}
         formFields={[
+          {
+            label: translate('register.form.firstname.label'),
+            placeholder: translate('register.form.firstname.placeholder'),
+            name: 'firstname',
+            type: 'firstname',
+            value: values.firstname,
+            error: errors.firstname,
+            onChange: handleChange,
+            onBlur: handleBlur,
+          },
+          {
+            label: translate('register.form.lastname.label'),
+            placeholder: translate('register.form.lastname.placeholder'),
+            name: 'lastname',
+            type: 'lastname',
+            value: values.lastname,
+            error: errors.lastname,
+            onChange: handleChange,
+            onBlur: handleBlur,
+          },
           {
             label: translate('register.form.email.label'),
             placeholder: translate('register.form.email.placeholder'),
