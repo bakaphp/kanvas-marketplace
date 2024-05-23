@@ -57,10 +57,39 @@ export default {
         placeholder: 'Add your password',
       },
       submit: 'Login',
-      noAccount: "Don't have an account?",
+      noAccount: 'Don\'t have an account?',
       signUp: 'Sign up',
       forgotPassword: 'Forgot your password?',
       rememberMe: 'Remember me',
+    },
+  },
+  register: {
+    title: 'Create your account',
+    form: {
+      title: 'Sign up',
+      firstname: {
+        label: 'Firstname',
+        placeholder: 'Add your firstname',
+      },
+      lastname: {
+        label: 'Lastname',
+        placeholder: 'Add your lastname',
+      },
+      email: {
+        label: 'Email',
+        placeholder: 'EJ: myexample@gmail.com',
+      },
+      password: {
+        label: 'Enter Password',
+        placeholder: 'Password',
+      },
+      passwordConfirmation: {
+        label: 'Confirm Password',
+        placeholder: 'Password',
+      },
+      submit: 'Sign up',
+      haveAccount: 'Have an account?',
+      signIn: 'Sign in',
     },
   },
   search: {
