@@ -33,7 +33,7 @@ function useRegisterPage() {
   ) {
     try {
       await register(data);
-      router.push('/signin');
+      router.push('/account');
     } catch (e: any) {
       alert(e.message);
     } finally {

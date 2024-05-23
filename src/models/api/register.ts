@@ -1,5 +1,6 @@
 'use server';
 
+import { cookies } from 'next/headers';
 import { app } from '../services/kanvas';
 
 type RegisterPayload = {
@@ -17,11 +18,15 @@ export async function register({
   password,
   passwordConfirmation,
 }: RegisterPayload) {
-  await app.users.register({
+  const result = await app.users.register({
     email,
     password,
     password_confirmation: passwordConfirmation,
     firstname,
     lastname,
+  });
+  // @ts-ignore
+  cookies().set('token', result.register.token.token, {
+    httpOnly: false,
   });
 }
