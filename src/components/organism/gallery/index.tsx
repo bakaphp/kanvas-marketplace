@@ -33,10 +33,10 @@ export function Gallery({ images = [] }: { images: { src: string; altText: strin
         {images[imageIndex] && (
           <Image
             className="h-[640px] w-[660px] object-cover"
-            fill
-            // sizes="(min-width: 1024px) 66vw, 100vw"
             alt={images[imageIndex].altText}
+            // sizes="(min-width: 1024px) 66vw, 100vw"
             src={images[imageIndex].src}
+            fill
             priority={true}
           />
         )}
