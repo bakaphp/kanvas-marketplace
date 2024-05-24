@@ -7,8 +7,47 @@ import { adminClient as app } from '@/models/services/kanvas/admin';
 
 export const runtime = 'edge';
 
-async function useProductPage(params: { slug: string }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const product = await app.inventory.getProduct({
+    first: 1,
+    whereCondition: {
+      column: 'SLUG',
+      operator: 'EQ',
+      value: params.slug,
+    },
+  });
+  const indexable = true;
+  return {
+    title: product.products.data[0].name || 'Kanvas Marketplace',
+    description: product.products.data[0].description || 'Not Description',
+    robots: {
+      index: indexable,
+      follow: indexable,
+      googleBot: {
+        index: indexable,
+        follow: indexable,
+      },
+    },
+    openGraph: product.products?.data?.[0]?.files?.data?.[0].url
+      ? {
+          images: [
+            {
+              url: '',
+              width: '',
+              height: '',
+              alt: '',
+            },
+          ],
+        }
+      : null,
+  };
+}
 
+async function useProductPage(params: { slug: string }) {
   try {
     const product = await app.inventory.getProduct({
       first: 1,
