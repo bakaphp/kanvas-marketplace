@@ -5,6 +5,7 @@ import { Open_Sans } from 'next/font/google';
 import './globals.css';
 import { ServerCoreStore } from '@kanvas/phoenix';
 import { adminClient } from '@/models/services/kanvas/admin';
+import Footer from '@/components/organism/footer';
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
@@ -39,6 +40,7 @@ export default async function RootLayout({
             <Navbar />
             <Suspense>
               <main>{children}</main>
+              <Footer />
             </Suspense>
           </ClientLayout>
         </body>
