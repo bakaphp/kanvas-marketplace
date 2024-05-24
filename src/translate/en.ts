@@ -6,6 +6,8 @@ export default {
     update: 'Update',
     userUpdated: 'The user has been successfully updated',
     userUpdateFailed: 'An error occurred while trying to update the user.',
+    "show-more": 'Show More',
+    "show-less": "Show Less"
   },
   'user-overview': {
     title: 'Personal Information',

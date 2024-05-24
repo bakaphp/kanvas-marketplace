@@ -1,6 +1,6 @@
+import { truncateText } from '@/models/interactions/truncate-text';
 import { Atoms } from '@kanvas/phoenix';
 import Link from 'next/link';
-import { Highlight } from 'react-instantsearch';
 
 export default function Hit({ hit }: { hit: any }) {
   return (
@@ -14,7 +14,7 @@ export default function Hit({ hit }: { hit: any }) {
         <div className='flex flex-col items-center h-[160px] justify-center'>
           <p className='text-sm text-[#4981BD]'>Brand</p>
           <Atoms.Body.Two className='font-semibold'>
-            <Highlight attribute='name' hit={hit} />
+            <span>{truncateText(hit.name, 50)}</span>
           </Atoms.Body.Two>
           <p className='font-semibold'>
             ${hit?.variants?.[0]?.warehouses?.[0]?.price ?? '2.20'}
