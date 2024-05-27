@@ -7,7 +7,8 @@ export default {
     userUpdated: 'The user has been successfully updated',
     userUpdateFailed: 'An error occurred while trying to update the user.',
     "show-more": 'Show More',
-    "show-less": "Show Less"
+    "show-less": "Show Less",
+    "related-products": "Related Products"
   },
   'user-overview': {
     title: 'Personal Information',

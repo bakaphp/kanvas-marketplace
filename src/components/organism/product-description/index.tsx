@@ -7,7 +7,7 @@ import { AddToCart } from '../cart/add-to-cart';
 import { TruncatedTitle } from './title-truncated';
 import CollapsibleProse from './collapse-prose';
 
-function useProductDescription(product: any) {
+export function useProductDescription(product: any) {
   const variants = product?.variants?.map((variant: any) => {
     return {
       id: 'gid://shopify/ProductVariant/' + variant?.metadata?.shopify?.id,
