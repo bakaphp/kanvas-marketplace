@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import Loading from './loading';
 import { translate } from '@/translate';
 import { adminClient as app } from '@/models/services/kanvas/admin';
+import RelatedProducts from '@/components/organism/related-products';
 
 export const runtime = 'edge';
 
@@ -107,6 +108,9 @@ export default async function ProductPage({
             }}
           />
         </div>
+      </div>
+      <div className='flex flex-col w-5/6 mx-auto '>
+        <RelatedProducts id='' />
       </div>
     </div>
   );
