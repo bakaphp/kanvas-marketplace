@@ -29,10 +29,11 @@ function useRegisterPage() {
 
   async function onSubmit(
     data: RegisterFormValues,
-    { setSubmitting }: FormikHelpers<RegisterFormValues>
+    { setSubmitting }: FormikHelpers<RegisterFormValues>,
   ) {
     try {
-      await register(data);
+      const result = await register(data);
+      if (!result.success) throw new Error(result.message);
       router.push('/account');
     } catch (e: any) {
       alert(e.message);
@@ -132,7 +133,7 @@ export default function RegisterPage() {
           {
             label: translate('register.form.passwordConfirmation.label'),
             placeholder: translate(
-              'register.form.passwordConfirmation.placeholder'
+              'register.form.passwordConfirmation.placeholder',
             ),
             name: 'passwordConfirmation',
             type: 'password',
