@@ -23,10 +23,11 @@ function useSignInPage() {
 
   async function onSubmit(
     { email, password }: SignInFormValues,
-    { setSubmitting }: FormikHelpers<SignInFormValues>
+    { setSubmitting }: FormikHelpers<SignInFormValues>,
   ) {
     try {
-      await login(email, password);
+      const result = await login(email, password);
+      if (!result.success) throw new Error(result.message);
       router.push('/account');
     } catch (e: any) {
       alert(e.message);
