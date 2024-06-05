@@ -6,6 +6,8 @@ import OpenCart from '../cart/open-cart';
 import MobileMenu from './mobile-menu';
 import Search, { SearchSkeleton } from './search';
 import LogoSquare from '@/components/atoms/icons/logo-square';
+import { Atoms, Molecules } from '@kanvas/phoenix';
+import ProfileMenu from '@/components/molecules/profile-menu';
 const { SITE_NAME } = process.env;
 
 export default async function Navbar() {
@@ -49,9 +51,10 @@ export default async function Navbar() {
           </Suspense>
         </div>
         <div className='flex justify-end md:w-1/3'>
-          <Link className=' mr-3 mt-3 text-sm' href={'/signin'}>
-            Sign In
-          </Link>
+
+          <Suspense>
+            <ProfileMenu />
+          </Suspense>
 
           <Suspense fallback={<OpenCart />}>
             <Cart />

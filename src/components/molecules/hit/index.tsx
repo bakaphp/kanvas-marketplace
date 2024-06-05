@@ -7,7 +7,7 @@ export default function Hit({ hit }: { hit: any }) {
     <Link href={`/product/${hit.slug}`}>
       <div className='h-[440px] w-72 text-center rounded-md border-2  border-border-default'>
         <img
-          src={hit.files?.[0]?.url ?? './default_image.svg'}
+          src={hit.files?.[0]?.url ?? '/default_image.svg'}
           alt={hit.name}
           className='h-72 w-full'
         />
