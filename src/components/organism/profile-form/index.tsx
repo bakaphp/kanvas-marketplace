@@ -8,6 +8,8 @@ import { useFormik } from 'formik';
 import { useEffect } from 'react';
 import { updateUserData } from '@/models/api/update-user-data';
 import toast, { Toaster } from 'react-hot-toast';
+import { useAtom } from 'jotai/react';
+import { userProfile } from '@/models/state/profile';
 
 const initialValues = {
   firstname: '',
@@ -22,6 +24,7 @@ const validationSchema = yup.object().shape({
 });
 
 function useProfileForm(profile?: UserData) {
+  const [user, setUser] = useAtom(userProfile);
   async function onSubmit(values: typeof initialValues) {
     try {
       await updateUserData(profile?.id!, {
@@ -59,6 +62,9 @@ function useProfileForm(profile?: UserData) {
       firstname: profile?.firstname!,
       lastname: profile?.lastname!,
     });
+    if (!user) {
+      setUser(profile!);
+    }
   }, []);
 
   return {
@@ -74,9 +80,9 @@ function useProfileForm(profile?: UserData) {
     },
   };
 }
-export default  function ProfileForm({ profile }: { profile?: UserData }) {
-
+export default function ProfileForm({ profile }: { profile?: UserData }) {
   const { models, operations } = useProfileForm(profile);
+
   return (
     <>
       <Toaster position='top-right' reverseOrder={false} />
