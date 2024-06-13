@@ -22,7 +22,7 @@ function SubmitButton({
 
   if (!availableForSale) {
     return (
-      <button aria-disabled className={clsx(buttonClasses, disabledClasses)}>
+      <button aria-disabled className={clsx(buttonClasses, disabledClasses)} disabled>
         Out Of Stock
       </button>
     );
@@ -67,11 +67,10 @@ function SubmitButton({
 
 export function AddToCart({
   variants,
-  availableForSale,
 }: {
   variants: ProductVariant[];
-  availableForSale: boolean;
 }) {
+  // console.log({variants})
   const [message, formAction] = useFormState(addItem, null);
   const searchParams = useSearchParams();
   const defaultVariantId = variants.length === 1 ? variants[0]?.id : undefined;
@@ -79,8 +78,9 @@ export function AddToCart({
     variant.selectedOptions.every(
       (option) => option.value === searchParams.get(option.name.toLowerCase())
     )
-  );
+  ) || (variants.length === 1 ? variants[0] : undefined);
   const selectedVariantId = variant?.id || defaultVariantId;
+  const availableForSale = variant?.availableForSale || false;
   const actionWithVariant = formAction.bind(null, selectedVariantId);
 
   return (

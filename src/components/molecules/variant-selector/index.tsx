@@ -30,7 +30,7 @@ export default function VariantSelector({
 
   const combinations: Combination[] = variants.map((variant: any) => ({
     id: variant.id,
-    availableForSale: variant.availableForSale,
+    availableForSale: variant.quantity > 0,
     // Adds key / value pairs for each variant (ie. "color": "Black" and "size": 'M").
     ...variant.selectedOptions.reduce(
       (accumulator: any, option: any) => ({ ...accumulator, [option.name.toLowerCase()]: option.value }),

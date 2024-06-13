@@ -21,6 +21,7 @@ export async function generateMetadata({
       value: params.slug,
     },
   });
+
   const indexable = true;
   return {
     title: product.products.data[0].name || 'Kanvas Marketplace',

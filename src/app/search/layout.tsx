@@ -3,7 +3,6 @@ import FilterSidebar from '@/components/organism/filter-sidebar';
 import { translate } from '@/translate';
 import { Atoms } from '@kanvas/phoenix';
 import { Suspense } from 'react';
-
 export default function SearchLayout({
   children,
 }: {

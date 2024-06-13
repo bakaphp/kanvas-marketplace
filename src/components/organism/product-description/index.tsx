@@ -1,7 +1,6 @@
 import Price from '@/components/atoms/price';
 import Prose from '@/components/atoms/prose';
 import VariantSelector from '@/components/molecules/variant-selector';
-import { truncateText } from '@/models/interactions/truncate-text';
 import { Suspense } from 'react';
 import { AddToCart } from '../cart/add-to-cart';
 import { TruncatedTitle } from './title-truncated';
@@ -17,7 +16,7 @@ export function useProductDescription(product: any) {
           value: variant.name,
         },
       ],
-      availableForSale: true,
+      availableForSale: variant?.channel?.quantity > 0,
       price: variant?.channel?.price,
       quantity: variant?.channel?.quantity,
     };
@@ -81,10 +80,7 @@ export function ProductDescription({ product }: { product: any }) {
         <VariantSelector options={models.options} variants={models.variants} />
       </Suspense>
       <Suspense fallback={null}>
-        <AddToCart
-          variants={models.variants}
-          availableForSale={models.variants?.[0].availableForSale}
-        />
+        <AddToCart variants={models.variants} />
       </Suspense>
     </>
   );
