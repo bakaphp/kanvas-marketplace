@@ -22,8 +22,12 @@ function SubmitButton({
 
   if (!availableForSale) {
     return (
-      <button aria-disabled className={clsx(buttonClasses, disabledClasses)} disabled>
-        Out Of Stock
+      <button
+        aria-disabled
+        className={clsx(buttonClasses, disabledClasses)}
+        disabled
+      >
+        {selectedVariantId ? 'Out Of Stock ' : 'No Shopify ID'}
       </button>
     );
   }
@@ -56,7 +60,7 @@ function SubmitButton({
         {pending ? (
           <LoadingDots className='mb-3 bg-white' />
         ) : (
-          // <PlusIcon className='h-5' /> 
+          // <PlusIcon className='h-5' />
           <></>
         )}
       </div>
@@ -65,22 +69,21 @@ function SubmitButton({
   );
 }
 
-export function AddToCart({
-  variants,
-}: {
-  variants: ProductVariant[];
-}) {
+export function AddToCart({ variants }: { variants: ProductVariant[] }) {
   // console.log({variants})
   const [message, formAction] = useFormState(addItem, null);
   const searchParams = useSearchParams();
   const defaultVariantId = variants.length === 1 ? variants[0]?.id : undefined;
-  const variant = variants.find((variant: ProductVariant) =>
-    variant.selectedOptions.every(
-      (option) => option.value === searchParams.get(option.name.toLowerCase())
-    )
-  ) || (variants.length === 1 ? variants[0] : undefined);
+  const variant =
+    variants.find((variant: ProductVariant) =>
+      variant.selectedOptions.every(
+        (option) =>
+          option.value === searchParams.get(option.name.toLowerCase()),
+      ),
+    ) || (variants.length === 1 ? variants[0] : undefined);
   const selectedVariantId = variant?.id || defaultVariantId;
-  const availableForSale = variant?.availableForSale || false;
+  const availableForSale = variant?.id && variant.availableForSale;
+
   const actionWithVariant = formAction.bind(null, selectedVariantId);
 
   return (

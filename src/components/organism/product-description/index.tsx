@@ -9,7 +9,7 @@ import CollapsibleProse from './collapse-prose';
 export function useProductDescription(product: any) {
   const variants = product?.variants?.map((variant: any) => {
     return {
-      id: 'gid://shopify/ProductVariant/' + variant?.metadata?.shopify?.id,
+      id: variant?.metadata?.shopify?.id ?'gid://shopify/ProductVariant/' + variant?.metadata?.shopify?.id : null,
       selectedOptions: [
         {
           name: 'select',
