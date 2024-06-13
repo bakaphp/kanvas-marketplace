@@ -10,7 +10,6 @@ import { updateUserData } from '@/models/api/update-user-data';
 import toast, { Toaster } from 'react-hot-toast';
 import { useAtom } from 'jotai/react';
 import { userProfile } from '@/models/state/profile';
-
 const initialValues = {
   firstname: '',
   lastname: '',
@@ -65,7 +64,7 @@ function useProfileForm(profile?: UserData) {
     if (!user) {
       setUser(profile!);
     }
-  }, []);
+  }, [profile]);
 
   return {
     models: {
@@ -81,6 +80,7 @@ function useProfileForm(profile?: UserData) {
   };
 }
 export default function ProfileForm({ profile }: { profile?: UserData }) {
+
   const { models, operations } = useProfileForm(profile);
 
   return (

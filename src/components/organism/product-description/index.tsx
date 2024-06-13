@@ -1,7 +1,6 @@
 import Price from '@/components/atoms/price';
 import Prose from '@/components/atoms/prose';
 import VariantSelector from '@/components/molecules/variant-selector';
-import { truncateText } from '@/models/interactions/truncate-text';
 import { Suspense } from 'react';
 import { AddToCart } from '../cart/add-to-cart';
 import { TruncatedTitle } from './title-truncated';
@@ -10,14 +9,14 @@ import CollapsibleProse from './collapse-prose';
 export function useProductDescription(product: any) {
   const variants = product?.variants?.map((variant: any) => {
     return {
-      id: 'gid://shopify/ProductVariant/' + variant?.metadata?.shopify?.id,
+      id: variant?.metadata?.shopify?.id ?'gid://shopify/ProductVariant/' + variant?.metadata?.shopify?.id : null,
       selectedOptions: [
         {
           name: 'select',
           value: variant.name,
         },
       ],
-      availableForSale: true,
+      availableForSale: variant?.channel?.quantity > 0,
       price: variant?.channel?.price,
       quantity: variant?.channel?.quantity,
     };
@@ -81,10 +80,7 @@ export function ProductDescription({ product }: { product: any }) {
         <VariantSelector options={models.options} variants={models.variants} />
       </Suspense>
       <Suspense fallback={null}>
-        <AddToCart
-          variants={models.variants}
-          availableForSale={models.variants?.[0].availableForSale}
-        />
+        <AddToCart variants={models.variants} />
       </Suspense>
     </>
   );

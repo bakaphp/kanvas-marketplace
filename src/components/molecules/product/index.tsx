@@ -34,12 +34,7 @@ export default function Product({ product, canBuy }: ProductProps) {
           />
           {canBuy && (
             <Suspense fallback={null}>
-              <AddToCart
-                variants={models.variants}
-                availableForSale={
-                  models?.variants?.[0]?.availableForSale ?? false
-                }
-              />
+              <AddToCart variants={models.variants} />
             </Suspense>
           )}
         </div>
