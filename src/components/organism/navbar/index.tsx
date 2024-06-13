@@ -13,11 +13,9 @@ const { SITE_NAME } = process.env;
 export default async function Navbar() {
   const menu = [] as any;
   return (
-    <nav className='relative flex items-center justify-between p-4 lg:px-6'>
+    <nav className='relative flex items-center justify-between p-4 lg:px-6 bg-primary text-primary-foreground fill-primary-foreground'>
       <div className='block flex-none md:hidden'>
-        <Suspense fallback={null}>
-          <MobileMenu menu={menu} />
-        </Suspense>
+        <MobileMenu menu={menu} />
       </div>
       <div className='flex w-full items-center'>
         <div className='flex w-full md:w-1/3'>
@@ -51,10 +49,7 @@ export default async function Navbar() {
           </Suspense>
         </div>
         <div className='flex justify-end md:w-1/3'>
-
-          <Suspense>
-            <ProfileMenu />
-          </Suspense>
+          <ProfileMenu />
 
           <Suspense fallback={<OpenCart />}>
             <Cart />

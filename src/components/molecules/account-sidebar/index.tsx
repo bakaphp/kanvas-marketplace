@@ -1,8 +1,9 @@
 'use client';
 
+import { cn } from '@kanvas/phoenix-rebirth/dist/lib/utils';
+import { useRouter, usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter, usePathname } from 'next/navigation';
 
 export type Item = {
   link: string;
@@ -16,7 +17,9 @@ interface Props {
 
 export function AccountSidebar({ items }: Props) {
   const path = usePathname();
+
   const [selectedKey, setSelectedKey] = useState(path);
+
   useEffect(() => {
     setSelectedKey(path);
   }, [path]);
@@ -29,12 +32,16 @@ export function AccountSidebar({ items }: Props) {
           return (
             <li
               key={item.key}
-              className={`mb-4 p-2 ${isSelected ? 'border-b-4 border-blue-500' : ''}`}
+              className={cn('mb-4 p-2 ', {
+                'border-b-4 border-primary': isSelected,
+              })}
             >
               <Link
                 href={item.link}
                 onClick={() => setSelectedKey(item.link)}
-                className={`cursor-pointer text-gray-400 hover:text-white pl-2 ${isSelected ? 'text-white' : ''}`}
+                className={cn('cursor-pointer pl-2', {
+                  'text-foreground': isSelected,
+                })}
               >
                 {item.title}
               </Link>

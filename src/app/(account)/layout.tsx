@@ -17,13 +17,13 @@ const sidebarItems: Array<Item> = [
 export default function AccountLayout({ children }: PropsWithChildren) {
   return (
     <>
-      <div className='h-36 w-full bg-black flex flex-col items-center justify-center text-center'>
+      <div className='h-36 w-full bg-background flex flex-col items-center justify-center text-center text-foreground'>
         <Atoms.Heading.Four className='text-3xl font-bold'>
           Your Profile
         </Atoms.Heading.Four>
-        <div className='h-1 w-12 bg-[#3574B6] mt-3'></div>
+        <div className='h-1 w-12 bg-primary mt-3'></div>
       </div>
-      <div className='flex h-screen text-white bg-gray-900 ml-32'>
+      <div className='flex h-screen text-foreground bg-background ml-32'>
         <AccountSidebar items={sidebarItems} />
         {children}
       </div>

@@ -80,7 +80,6 @@ function useProfileForm(profile?: UserData) {
   };
 }
 export default function ProfileForm({ profile }: { profile?: UserData }) {
-
   const { models, operations } = useProfileForm(profile);
 
   return (
@@ -92,7 +91,7 @@ export default function ProfileForm({ profile }: { profile?: UserData }) {
             <Atoms.Icons.Spinner size={50} />
           ) : (
             <div className='grid grid-cols-6 gap-4'>
-              <div className='border-[#374151] border-2 rounded-lg  col-span-4'>
+              <div className='border-2 rounded-lg  col-span-4'>
                 <div className='m-5'>
                   <Atoms.Body.One>
                     {translate('user-overview.title')}

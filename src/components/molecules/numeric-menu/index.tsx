@@ -1,5 +1,5 @@
-import React from 'react';
 import { useNumericMenu, UseNumericMenuProps } from 'react-instantsearch';
+import React from 'react';
 
 import clsx from 'clsx';
 
@@ -14,7 +14,7 @@ export function NumericMenu(props: NumericMenuProps) {
       className={clsx(
         'ais-NumericMenu',
         hasNoResults && 'ais-NumericMenu--noRefinement',
-        props.className
+        props.className,
       )}
     >
       <ul className='ais-NumericMenu-list'>
@@ -23,17 +23,19 @@ export function NumericMenu(props: NumericMenuProps) {
             key={item.value}
             className={clsx(
               'ais-NumericMenu-item',
-              item.isRefined && 'ais-NumericMenu-item--selected'
+              item.isRefined && 'ais-NumericMenu-item--selected',
             )}
           >
             <label className='ais-NumericMenu-label'>
               <input
-                className='ais-NumericMenu-radio w-4 h-4 bg-[#111827]'
+                className='ais-NumericMenu-radio w-4 h-4 checked:!bg-primary checked:hover:!bg-primary !ring-primary focus:!bg-primary'
                 type='radio'
                 checked={item.isRefined}
                 onChange={() => refine(item.value)}
               />
-              <span className='ais-NumericMenu-labelText pl-2'>{item.label}</span>
+              <span className='ais-NumericMenu-labelText pl-2'>
+                {item.label}
+              </span>
             </label>
           </li>
         ))}

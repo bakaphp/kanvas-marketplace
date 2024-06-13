@@ -29,7 +29,7 @@ export default function SearchPage() {
         />
         <SortBy
           classNames={{
-            select: "bg-[#111827]"
+            select: "bg-primary text-primary-foreground rounded"
           }}
           items={[
             { value: '', label: 'Most Relevant' },
@@ -48,9 +48,9 @@ export default function SearchPage() {
           classNames={{
             list: 'flex items-center justify-center w-auto border-2 border-border-default rounded-md',
             item: 'w-9 h-9 items-center justify-center flex',
-            pageItem: 'border-r-2 border-border-default justify-center flex ',
+            pageItem: 'border-r-2 border-border-default justify-center flex',
             previousPageItem: 'border-r-2 border-border-default',
-            selectedItem: 'bg-[#3574B6]',
+            selectedItem: 'bg-primary text-primary-foreground',
           }}
         />
       </div>

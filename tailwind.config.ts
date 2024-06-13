@@ -1,7 +1,9 @@
+import { createTailwindConfig } from '@kanvas/phoenix-rebirth/dist/config/tailwind';
+
 const plugin = require('tailwindcss/plugin');
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+module.exports = createTailwindConfig({
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -41,102 +43,102 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
-        primary: {
-          [100]: '#3574B6',
-        },
-        default: '#374151',
-        'primary-background': '#111827',
-        background: {
-          100: '#111827',
-        },
-        border: {
-          default: '#374151',
-        },
-        base: {
-          primary: {
-            100: '#111827',
-            90: '#1F2937',
-            80: '#5D8FC4',
-            70: '#719DCB',
-            60: '#85ABD3',
-            50: '#9AB9DA',
-            40: '#AEC7E1',
-            30: '#C2D5E9',
-            20: '#D6E3F0',
-            10: '#EAF1F7',
-          },
-          neutral: {
-            black: '#000000',
-            white: '#FFFFFF',
-            grey: {
-              100: '#111827',
-              90: '#1F2937',
-              80: '#F9FAFB',
-              70: '#4B5563',
-              60: '#6B7280',
-              50: '#9CA3AF',
-              40: '#D1D5DB',
-              30: '#E5E7EB',
-              20: '#F3F4F6',
-              10: '#1F2937',
-            },
-          },
-          semantic: {
-            success: {
-              100: '#054F31',
-              90: '#05603A',
-              80: '#027A48',
-              70: '#039855',
-              60: '#12B76A',
-              50: '#32D583',
-              40: '#6CE9A6',
-              30: '#A6F4C5',
-              20: '#D1FADF',
-              10: '#ECFDF3',
-            },
-            warning: {
-              100: '#7A2E0E',
-              90: '#93370D',
-              80: '#B54708',
-              70: '#DC6803',
-              60: '#F79009',
-              50: '#FDB022',
-              40: '#FEC84B',
-              30: '#FEDF89',
-              20: '#FEF0C7',
-              10: '#FFFAEB',
-            },
-            error: {
-              100: '#7A271A',
-              90: '#912018',
-              80: '#B42318',
-              70: '#D92D20',
-              60: '#F04438',
-              50: '#F97066',
-              40: '#FDA29B',
-              30: '#FECDCA',
-              20: '#FEE4E2 ',
-              10: '#FEF3F2',
-            },
-          },
-        },
+        // primary: {
+        //   [100]: '#3574B6',
+        // },
+        // default: '#374151',
+        // 'primary-background': '#111827',
+        // background: {
+        //   100: '#111827',
+        // },
+        // border: {
+        //   default: '#374151',
+        // },
+        // base: {
+        //   primary: {
+        //     100: '#111827',
+        //     90: '#1F2937',
+        //     80: '#5D8FC4',
+        //     70: '#719DCB',
+        //     60: '#85ABD3',
+        //     50: '#9AB9DA',
+        //     40: '#AEC7E1',
+        //     30: '#C2D5E9',
+        //     20: '#D6E3F0',
+        //     10: '#EAF1F7',
+        //   },
+        //   neutral: {
+        //     black: '#000000',
+        //     white: '#FFFFFF',
+        //     grey: {
+        //       100: '#111827',
+        //       90: '#1F2937',
+        //       80: '#F9FAFB',
+        //       70: '#4B5563',
+        //       60: '#6B7280',
+        //       50: '#9CA3AF',
+        //       40: '#D1D5DB',
+        //       30: '#E5E7EB',
+        //       20: '#F3F4F6',
+        //       10: '#1F2937',
+        //     },
+        //   },
+        //   semantic: {
+        //     success: {
+        //       100: '#054F31',
+        //       90: '#05603A',
+        //       80: '#027A48',
+        //       70: '#039855',
+        //       60: '#12B76A',
+        //       50: '#32D583',
+        //       40: '#6CE9A6',
+        //       30: '#A6F4C5',
+        //       20: '#D1FADF',
+        //       10: '#ECFDF3',
+        //     },
+        //     warning: {
+        //       100: '#7A2E0E',
+        //       90: '#93370D',
+        //       80: '#B54708',
+        //       70: '#DC6803',
+        //       60: '#F79009',
+        //       50: '#FDB022',
+        //       40: '#FEC84B',
+        //       30: '#FEDF89',
+        //       20: '#FEF0C7',
+        //       10: '#FFFAEB',
+        //     },
+        //     error: {
+        //       100: '#7A271A',
+        //       90: '#912018',
+        //       80: '#B42318',
+        //       70: '#D92D20',
+        //       60: '#F04438',
+        //       50: '#F97066',
+        //       40: '#FDA29B',
+        //       30: '#FECDCA',
+        //       20: '#FEE4E2 ',
+        //       10: '#FEF3F2',
+        //     },
+        //   },
+        // },
       },
       fontFamily: {
         sans: ['var(--font-geist-sans)'],
       },
       keyframes: {
         fadeIn: {
-          from: { opacity: 0 },
-          to: { opacity: 1 },
+          from: { opacity: '0' },
+          to: { opacity: '1' },
         },
         marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-100%)' },
         },
         blink: {
-          '0%': { opacity: 0.2 },
-          '20%': { opacity: 1 },
-          '100% ': { opacity: 0.2 },
+          '0%': { opacity: '0.2' },
+          '20%': { opacity: '1' },
+          '100% ': { opacity: '0.2' },
         },
       },
       animation: {
@@ -166,8 +168,8 @@ module.exports = {
         },
         {
           values: theme('transitionDelay'),
-        }
+        },
       );
     }),
   ],
-};
+});

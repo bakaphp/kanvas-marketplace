@@ -1,7 +1,7 @@
-import FilterItem from '@/components/molecules/filter-item';
 import { NumericMenu } from '@/components/molecules/numeric-menu';
-import { translate } from '@/translate';
+import FilterItem from '@/components/molecules/filter-item';
 import { RefinementList } from 'react-instantsearch';
+import { translate } from '@/translate';
 
 function useFilterSidebar() {
   const items = [
@@ -13,7 +13,8 @@ function useFilterSidebar() {
           attribute='attributes.year'
           classNames={{
             count: 'hidden',
-            checkbox: 'w-4 h-4 bg-[#111827] rounded-sm',
+            checkbox:
+              'w-4 h-4 bg-background rounded-sm checked:!bg-primary focus:!ring-primary focus:!bg-primary focus:hover:!bg-primary checked:hover:!bg-primary',
             labelText: 'pl-2 text-sm',
             item: 'pt-2',
           }}
@@ -28,7 +29,8 @@ function useFilterSidebar() {
           attribute='company.name'
           classNames={{
             count: 'hidden',
-            checkbox: 'w-4 h-4 bg-[#111827] rounded-sm',
+            checkbox:
+              'w-4 h-4 bg-background rounded-sm checked:!bg-primary focus:!ring-primary focus:!bg-primary focus:hover:!bg-primary checked:hover:!bg-primary',
             labelText: 'pl-2 text-sm',
             item: 'pt-2',
           }}
@@ -63,7 +65,7 @@ export default function FilterSidebar() {
 
   return (
     <div className='order-first w-full flex-none md:max-w-[280px]'>
-      <div className='bg-[#1F2937] h-12 rounded-t-lg'>
+      <div className='bg-primary text-primary-foreground h-12 rounded-t-lg'>
         <p className='font-bold text-sm pl-2 pt-2'>
           {translate('search.filters')}
         </p>

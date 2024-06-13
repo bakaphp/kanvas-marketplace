@@ -1,15 +1,15 @@
-import { ChevronUpIcon } from '@heroicons/react/20/solid';
+import { ChevronUpIcon } from '@kanvas/phoenix-rebirth/dist/components/icons';
+import { cn } from '@kanvas/phoenix-rebirth/dist/lib/utils';
 import { useState, useEffect } from 'react';
 
 interface Props {
   title: string;
   content: React.ReactNode;
-  id: string; 
+  id: string;
 }
 
 export default function FilterItem(props: Props) {
   const [isOpen, setIsOpen] = useState(true);
-
 
   useEffect(() => {
     const savedState = localStorage.getItem(`disclosure-${props.id}`);
@@ -34,13 +34,18 @@ export default function FilterItem(props: Props) {
       >
         <span>{props.title}</span>
         <ChevronUpIcon
-          className={`${isOpen ? 'rotate-180 transform' : ''} h-5 w-5 text-white`}
+          className={cn(
+            { 'rotate-180 transform': isOpen },
+            'h-5 w-5 text-foreground',
+          )}
         />
       </button>
+
       <div
-        className={`${
-          isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-        } transition-all duration-300 overflow-hidden`}
+        className={cn('transition-all duration-300 overflow-hidden', {
+          'max-h-screen opacity-100': isOpen,
+          'max-h-0 opacity-0': !isOpen,
+        })}
       >
         <div className='px-4 pb-2 pt-4 text-sm border-2 border-border-default'>
           {props.content}

@@ -11,14 +11,14 @@ export default function SearchLayout({
   return (
     <>
       <Suspense>
-        <div className='h-36 w-full bg-black flex flex-col items-center justify-center text-center'>
+        <div className='h-36 w-full bg-background flex flex-col items-center justify-center text-center'>
           <Atoms.Heading.Four className='text-3xl font-bold'>
             {translate('search.title')}
           </Atoms.Heading.Four>
-          <div className='h-1 w-12 bg-[#3574B6] mt-3'></div>
+          <div className='h-1 w-12 bg-primary mt-3'></div>
         </div>
 
-        <div className='mx-auto flex max-w-screen-2xl flex-col gap-8 px-4 pb-4 text-black md:flex-row dark:text-white pt-5'>
+        <div className='mx-auto flex max-w-screen-2xl flex-col gap-8 px-4 pb-4 text-foreground md:flex-row pt-5'>
           <FilterSidebar />
           <div className='order-last min-h-screen w-full md:order-none'>
             {children}
