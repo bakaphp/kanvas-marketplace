@@ -27,7 +27,7 @@ function SubmitButton({
         className={clsx(buttonClasses, disabledClasses)}
         disabled
       >
-        {selectedVariantId ? 'Out Of Stock ' : 'No Shopify ID'}
+        Out Of Stock
       </button>
     );
   }
