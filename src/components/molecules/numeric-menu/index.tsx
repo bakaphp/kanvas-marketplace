@@ -28,7 +28,7 @@ export function NumericMenu(props: NumericMenuProps) {
           >
             <label className='ais-NumericMenu-label'>
               <input
-                className='ais-NumericMenu-radio w-4 h-4'
+                className='ais-NumericMenu-radio w-4 h-4 bg-[#111827]'
                 type='radio'
                 checked={item.isRefined}
                 onChange={() => refine(item.value)}

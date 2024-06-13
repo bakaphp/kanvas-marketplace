@@ -13,6 +13,7 @@ export default function ClientLayout({ children }: PropsWithChildren) {
         indexName={process.env.NEXT_PUBLIC_ALGOLIA_PRODUCTS_INDEX}
         routing
         future={{ persistHierarchicalRootCount: false }}
+
       >
         {children}
       </InstantSearch>

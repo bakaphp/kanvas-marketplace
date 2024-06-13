@@ -28,6 +28,9 @@ export default function SearchPage() {
           }}
         />
         <SortBy
+          classNames={{
+            select: "bg-[#111827]"
+          }}
           items={[
             { value: '', label: 'Most Relevant' },
             { value: 'product-asc', label: 'A-Z' },
