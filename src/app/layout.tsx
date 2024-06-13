@@ -33,7 +33,7 @@ export default async function RootLayout({
   children: ReactNode;
 }) {
   return (
-    <html lang='en' className={OpenSans.className}>
+    <html lang='en' className={OpenSans.className + ' dark' }>
       <ServerCoreStore sdk={adminClient}>
         <body className='bg-background text-foreground selection:bg-primary selection:text-primary-foreground'>
           <ClientLayout>

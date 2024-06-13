@@ -13,6 +13,7 @@ import CloseCart from './close-cart';
 import OpenCart from './open-cart';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Button } from '@kanvas/phoenix-rebirth/dist/components/base/button';
 
 type MerchandiseSearchParams = {
   [key: string]: string;
@@ -192,12 +193,14 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                       />
                     </div>
                   </div>
-                  <a
-                    href={cart.checkoutUrl}
-                    className='block w-full rounded-full bg-blue-600 p-3 text-center text-sm font-medium text-white opacity-90 hover:opacity-100'
-                  >
-                    Proceed to Checkout
-                  </a>
+                  <Button>
+                    <a
+                      href={cart.checkoutUrl}
+                      className='block w-full p-3 text-center text-sm font-medium text-primary-foreground opacity-90 hover:opacity-100'
+                    >
+                      Proceed to Checkout
+                    </a>
+                  </Button>
                 </div>
               )}
             </Dialog.Panel>

@@ -25,7 +25,7 @@ button {
   text-align: center;
 }
 
-@layer base {
+/* @layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 20 14.3% 4.1%;
@@ -70,9 +70,9 @@ button {
     --input: 12 6.5% 15.1%;
     --ring: 20.5 90.2% 48.2%;
   }
-}
+} */
 
-/* @layer base {
+@layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
@@ -117,7 +117,7 @@ button {
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
   }
-} */
+}
 
 @layer base {
   * {
