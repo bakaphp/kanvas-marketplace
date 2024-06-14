@@ -11,14 +11,12 @@ export default function Search() {
 
   return (
     <div className='w-max-[550px] relative w-full lg:w-80 xl:w-full '>
-      <Input placeholder='Search for products...' />
-
-      {/* <SearchBox
+      <SearchBox
         searchAsYouType={false}
         queryHook={(query, search) => {
           setTimeout(() => {
             if (path !== '/search') {
-              router.push('search');
+              router.push('/search');
               setTimeout(() => {
                 search(query);
               }, 500);
@@ -26,14 +24,15 @@ export default function Search() {
           }, 300);
           search(query);
         }}
+        placeholder='Search for products...'
         classNames={{
           resetIcon: 'hidden',
           submitIcon:
-            'absolute left-0 top-0 ml-2  flex w-4 h-full items-center text-xl fill-white',
+            'absolute left-0 top-0 ml-2  flex w-4 h-full items-center text-xl fill-primary-foreground ',
           input:
-            'w-full bg-primary rounded-lg border bg-white px-4 pl-8 py-2 text-sm text-black placeholder:text-neutral-500',
+            'w-full bg-primary rounded-lg border px-4 pl-8 py-2 text-sm text-black placeholder:text-primary-foreground',
         }}
-      /> */}
+      />
     </div>
   );
 }
