@@ -1,9 +1,11 @@
 import Product from '@/components/molecules/product';
-import { adminClient } from '@/models/services/kanvas/admin';
+import { getProduct } from '@/models/api/products';
 import { translate } from '@/translate';
 
 async function useRelatedProducts() {
-  const products = await adminClient.inventory.getProduct({ first: 4 });
+  const products = await getProduct({
+    first: 4,
+  });
 
   return {
     models: {
@@ -24,7 +26,7 @@ export default async function RelatedProducts({ id }: { id: string }) {
         {translate('general.related-products')}
       </h2>
       <ul className='flex w-full gap-4  pt-1'>
-        {relatedProducts.map((product) => (
+        {relatedProducts.map((product: any) => (
           <li key={product.slug} className=''>
             <Product product={product} canBuy />
           </li>
