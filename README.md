@@ -1,36 +1,169 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Kanvas Marketplace Documentation
 
-## Getting Started
+## Introduction
+Kanvas Marketplace is a versatile platform that allows users to create different types of stores using the Kanvas framework. These stores can be informational, lead-generating, or fully functional Shopify-based stores. The core of the marketplace is built using [Kanvas Core JS](https://github.com/bakaphp/kanvas-core-js).
 
-First, run the development server:
+## Requirements
+To set up and run Kanvas Marketplace, you need the following:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- A Shopify account (if creating a Shopify-based store)
+- Algolia account for search functionality
+- Kanvas API keys and URLs
+- React instant Search library.
+
+## Configuration
+
+### Environment Variables
+To configure your Kanvas Marketplace, you'll need to set the following environment variables in your `.env` file:
+
+```shell
+# Company Information
+COMPANY_NAME="Kanvas"
+SITE_NAME="Kanvas Marketplace"
+
+# Shopify Configuration
+SHOPIFY_REVALIDATION_SECRET="your-shopify-revalidation-secret"
+SHOPIFY_STOREFRONT_ACCESS_TOKEN="your-shopify-access-token"
+SHOPIFY_STORE_DOMAIN="your-shopify-store-domain"
+
+# Algolia Configuration
+NEXT_PUBLIC_ALGOLIA_APP_ID="your-algolia-app-id"
+NEXT_PUBLIC_ALGOLIA_API_KEY="your-algolia-api-key"
+NEXT_PUBLIC_ALGOLIA_PRODUCTS_INDEX="your-algolia-products-index"
+
+# Kanvas Configuration
+NEXT_PUBLIC_KANVAS_API_URL="https://your-kanvas-api-url/graphql"
+NEXT_PUBLIC_KANVAS_API_KEY="your-kanvas-api-key"
+NEXT_PUBLIC_KANVAS_ADMIN_KEY="your-kanvas-admin-key"
+
+# Vercel Configuration
+NEXT_PUBLIC_VERCEL_URL="your-vercel-url"
+
+You can get the kanvas keys from the kanvas admin page or contacting kanvas support team.
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Setting Up the Client Layout
+In your ClientLayout component, ensure you set up the InstantSearch from Algolia correctly.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```typescript
+'use client';
+import { searchClient } from '@/models/services/algolia';
+import { PropsWithChildren } from 'react';
+import { InstantSearch } from 'react-instantsearch';
+import { ClientCoreStore } from '@kanvas/phoenix/dist/client';
+import { adminClient } from '@/models/services/kanvas/admin';
 
-## Learn More
+export default function ClientLayout({ children }: PropsWithChildren) {
+  return (
+    <ClientCoreStore sdk={adminClient}>
+      <InstantSearch
+        searchClient={searchClient} // here
+        indexName={process.env.NEXT_PUBLIC_ALGOLIA_PRODUCTS_INDEX}
+        routing
+        future={{ persistHierarchicalRootCount: false }}
+      >
+        {children}
+      </InstantSearch>
+    </ClientCoreStore>
+  );
+}
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+// models/services/algolia/index.ts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+import algoliasearch from "algoliasearch/lite";
 
-## Deploy on Vercel
+export const searchClient = algoliasearch(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!, process.env.NEXT_PUBLIC_ALGOLIA_API_KEY!);
+```
+# Setting Up Algolia Filters
+To configure the sidebar filters for Algolia, you will need to customize your search and filtering logic. Here's an example setup:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```typescript
+// src\components\organism\filter-sidebar\index.tsx
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+import FilterItem from '@/components/molecules/filter-item';
+import { NumericMenu } from '@/components/molecules/numeric-menu';
+import { translate } from '@/translate';
+import { RefinementList } from 'react-instantsearch';
+
+function useFilterSidebar() {
+  const items = [
+    {
+      id: 'year',
+      title: translate('search.sidebar.year'),
+      content: (
+        <RefinementList
+          attribute='attributes.year' // this is the id of the facets that are created on algolia
+          classNames={{
+            count: 'hidden',
+            checkbox: 'w-4 h-4 bg-[#111827] rounded-sm',
+            labelText: 'pl-2 text-sm',
+            item: 'pt-2',
+          }}
+        />
+      ),
+    },
+    {
+      id: 'company',
+      title: translate('search.sidebar.company'),
+      content: (
+        <RefinementList
+          attribute='company.name'
+          classNames={{
+            count: 'hidden',
+            checkbox: 'w-4 h-4 bg-[#111827] rounded-sm',
+            labelText: 'pl-2 text-sm',
+            item: 'pt-2',
+          }}
+        />
+      ),
+    },
+    {
+      id: 'price',
+      title: translate('search.sidebar.price'),
+      content: (
+        <NumericMenu //this is a custom component created with the instant search hooks
+          attribute='variants.warehouses.price'
+          items={[
+            { label: 'All' },
+            { end: 1, label: 'Free' },
+            { start: 50, label: '> $50' },
+          ]}
+        />
+      ),
+    },
+  ];
+
+  return {
+    models: {
+      items,
+    },
+  };
+}
+
+export default function FilterSidebar() {
+  const { models } = useFilterSidebar();
+
+  return (
+    <div className='...'>
+      <div className='...'>
+        <p className='...'>
+          example text
+        </p>
+      </div>
+      {models.items.map((item) => (
+        <FilterItem
+          key={item.id}
+          title={item.title}
+          content={item.content}
+          id={item.id}
+        />
+      ))}
+    </div>
+  );
+}
+```
+
+# Conclusion
+This documentation provides the basic setup and configuration necessary to get started with Kanvas Marketplace. For more detailed information, refer to the official repositories and documentation provided by Kanvas, Algolia, React Instant Search.
