@@ -1,7 +1,7 @@
 # Kanvas Marketplace Documentation
 
 ## Introduction
-Kanvas Marketplace is a versatile platform that allows users to create different types of stores using the Kanvas framework. These stores can be informational, lead-generating, or fully functional Shopify-based stores. The core of the marketplace is built using [Kanvas Core JS](https://github.com/bakaphp/kanvas-core-js).
+Kanvas Marketplace is a versatile platform that allows users to create different types of stores using the Kanvas Nicho. These stores can be informational, lead-generating, or fully functional Shopify-based stores. The core of the marketplace is built using [Kanvas Core JS](https://github.com/bakaphp/kanvas-core-js).
 
 ## Requirements
 To set up and run Kanvas Marketplace, you need the following:
