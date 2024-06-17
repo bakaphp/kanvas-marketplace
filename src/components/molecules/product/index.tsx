@@ -1,7 +1,9 @@
 import Price from '@/components/atoms/price';
 import { AddToCart } from '@/components/organism/cart/add-to-cart';
 import { useProductDescription } from '@/components/organism/product-description';
+import { detectShopType } from '@/models/interactions/shop-type/indext';
 import { truncateText } from '@/models/interactions/truncate-text';
+import { ShopType } from '@/models/types/shop-type';
 import { ProductInterface } from '@kanvas/core';
 import { Atoms } from '@kanvas/phoenix';
 import { Suspense } from 'react';
@@ -14,11 +16,12 @@ interface ProductProps {
 export default function Product({ product, canBuy }: ProductProps) {
   const productImage = product?.files?.data?.[0]?.url ?? '/default_image.svg';
   const productName = product?.name ?? 'Product Name';
+  const shop = detectShopType();
   //   @ts-ignore
   const productPrice = product?.variants?.[0].channel.price
     ? product?.variants?.[0].channel.price
-      //   @ts-ignore
-    : product?.variants?.[0].warehouses?.[0]?.channels[0].price ?? "0";
+    : //   @ts-ignore
+      product?.variants?.[0].warehouses?.[0]?.channels[0].price ?? '0';
   const { models } = useProductDescription(product);
 
   return (
@@ -35,7 +38,7 @@ export default function Product({ product, canBuy }: ProductProps) {
             className='font-bold'
             currencyCode='DOP'
           />
-          {canBuy && (
+          {canBuy && shop === ShopType.SHOPIFY && (
             <Suspense fallback={null}>
               <AddToCart variants={models.variants} />
             </Suspense>

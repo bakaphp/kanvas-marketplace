@@ -8,9 +8,10 @@ import Search, { SearchSkeleton } from './search';
 import LogoSquare from '@/components/atoms/icons/logo-square';
 import { Atoms, Molecules } from '@kanvas/phoenix';
 import ProfileMenu from '@/components/molecules/profile-menu';
+import { ShopType } from '@/models/types/shop-type';
 const { SITE_NAME } = process.env;
 
-export default async function Navbar() {
+export default async function Navbar({ type }: { type: string }) {
   const menu = [] as any;
   return (
     <nav className='relative flex items-center justify-between p-4 lg:px-6 bg-primary text-primary-foreground fill-primary-foreground'>
@@ -51,9 +52,11 @@ export default async function Navbar() {
         <div className='flex justify-end md:w-1/3'>
           <ProfileMenu />
 
-          <Suspense fallback={<OpenCart />}>
-            <Cart />
-          </Suspense>
+          {type === ShopType.SHOPIFY && (
+            <Suspense fallback={<OpenCart />}>
+              <Cart />
+            </Suspense>
+          )}
         </div>
       </div>
     </nav>

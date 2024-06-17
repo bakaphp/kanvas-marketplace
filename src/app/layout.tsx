@@ -6,6 +6,7 @@ import './globals.css';
 import { ServerCoreStore } from '@kanvas/phoenix';
 import { adminClient } from '@/models/services/kanvas/admin';
 import Footer from '@/components/organism/footer';
+import { detectShopType } from '@/models/interactions/shop-type/indext';
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
@@ -32,12 +33,13 @@ export default async function RootLayout({
 }: {
   children: ReactNode;
 }) {
+  const shopType = detectShopType()
   return (
     <html lang='en' className={OpenSans.className + ' dark' }>
       <ServerCoreStore sdk={adminClient}>
         <body className='bg-background text-foreground selection:bg-primary selection:text-primary-foreground'>
           <ClientLayout>
-            <Navbar />
+            <Navbar type={shopType} />
             <main>{children}</main>
             <Footer />
           </ClientLayout>

@@ -5,8 +5,11 @@ import { Suspense } from 'react';
 import { AddToCart } from '../cart/add-to-cart';
 import { TruncatedTitle } from './title-truncated';
 import CollapsibleProse from './collapse-prose';
+import { detectShopType } from '@/models/interactions/shop-type/indext';
+import { ShopType } from '@/models/types/shop-type';
 
 export function useProductDescription(product: any) {
+  const shopType = detectShopType();
   const variants = product?.variants?.map((variant: any) => {
     return {
       id: variant?.metadata?.shopify?.id
@@ -53,6 +56,7 @@ export function useProductDescription(product: any) {
     models: {
       variants,
       options,
+      shopType,
     },
   };
 }
@@ -82,8 +86,15 @@ export function ProductDescription({ product }: { product: any }) {
         />
         <p className='text-xs text-foreground/80'>+12% VAT Added</p>
       </div>
-      <VariantSelector options={models.options} variants={models.variants} />
-      <AddToCart variants={models.variants} />
+      {models.shopType === ShopType.SHOPIFY && (
+        <>
+          <VariantSelector
+            options={models.options}
+            variants={models.variants}
+          />
+          <AddToCart variants={models.variants} />
+        </>
+      )}
     </>
   );
 }

@@ -1,20 +1,9 @@
-interface EnvironmentVariables {
-  COMPANY_NAME: string;
-  SITE_NAME: string;
-  SHOPIFY_REVALIDATION_SECRET?: string;
-  SHOPIFY_STOREFRONT_ACCESS_TOKEN?: string;
-  SHOPIFY_STORE_DOMAIN?: string;
-  NEXT_PUBLIC_SHOP_TYPE?: string;
-}
+import { ShopType } from "@/models/types/shop-type";
 
-enum ShopType {
-  INFORMATIVE = 'informative',
-  LEADS = 'leads',
-  SHOPIFY = 'shopify',
-  UNKNOWN = 'unknown',
-}
 
-export function detectShopType(): ShopType {
+
+
+export function detectShopType(): string {
   if (
     process.env.SHOPIFY_REVALIDATION_SECRET &&
     process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN &&
