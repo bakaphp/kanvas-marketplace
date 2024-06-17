@@ -18,7 +18,9 @@ export function useProductDescription(product: any) {
           value: variant.name,
         },
       ],
-      availableForSale: variant?.channel?.quantity > 0,
+      availableForSale: variant?.channel?.quantity
+        ? variant?.channel?.quantity > 0
+        : variant?.warehouses?.[0]?.quantity > 0,
       price: variant?.channel?.price
         ? variant?.channel?.price
         : variant?.warehouses?.[0]?.channels?.[0]?.price,

@@ -37,7 +37,7 @@ function SubmitButton({
         aria-disabled
         className='w-full'
       >
-        Add To Cart pepe
+        Add To Cart
       </Button>
     );
   }

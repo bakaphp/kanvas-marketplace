@@ -82,6 +82,7 @@ export const GET_PRODUCTS = gql`
           }
           warehouses {
             warehouses_id
+            quantity
             status_history {
               id
               name

@@ -15,7 +15,9 @@ export default function Product({ product, canBuy }: ProductProps) {
   const productImage = product?.files?.data?.[0]?.url ?? '/default_image.svg';
   const productName = product?.name ?? 'Product Name';
   //   @ts-ignore
-  const productPrice = product?.variants?.[0].channel.price ?? '$2.20';
+  const productPrice = product?.variants?.[0].channel.price
+    ? product?.variants?.[0].channel.price
+    : product?.variants?.[0].warehouses?.[0]?.channels[0].price ?? "0";
   const { models } = useProductDescription(product);
 
   return (

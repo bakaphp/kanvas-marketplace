@@ -51,14 +51,14 @@ export async function generateMetadata({
 
 async function useProductPage(params: { slug: string }) {
   try {
-  const product = await getProduct({
-    first: 1,
-    whereCondition: {
-      column: 'SLUG',
-      operator: 'EQ',
-      value: params.slug,
-    },
-  });
+    const product = await getProduct({
+      first: 1,
+      whereCondition: {
+        column: 'SLUG',
+        operator: 'EQ',
+        value: params.slug,
+      },
+    });
     return {
       models: {
         product,
@@ -82,8 +82,6 @@ export default async function ProductPage({
   const { models } = await useProductPage(params);
   const productData =
     models.product?.products?.data?.[0] || ({ files: { data: [] } } as any);
-
-
 
   if (!models.product) {
     return <div>{translate('general.load-fail')}</div>;
