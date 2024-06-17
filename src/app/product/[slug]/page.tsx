@@ -5,6 +5,7 @@ import Loading from './loading';
 import { translate } from '@/translate';
 import { adminClient as app } from '@/models/services/kanvas/admin';
 import RelatedProducts from '@/components/organism/related-products';
+import { getProduct } from '@/models/api/products';
 
 export const runtime = 'edge';
 
@@ -13,7 +14,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }) {
-  const product = await app.inventory.getProduct({
+  const product = await getProduct({
     first: 1,
     whereCondition: {
       column: 'SLUG',
@@ -21,7 +22,6 @@ export async function generateMetadata({
       value: params.slug,
     },
   });
-
   const indexable = true;
   return {
     title: product.products.data[0].name || 'Kanvas Marketplace',
@@ -51,14 +51,14 @@ export async function generateMetadata({
 
 async function useProductPage(params: { slug: string }) {
   try {
-    const product = await app.inventory.getProduct({
-      first: 1,
-      whereCondition: {
-        column: 'SLUG',
-        operator: 'EQ',
-        value: params.slug,
-      },
-    });
+  const product = await getProduct({
+    first: 1,
+    whereCondition: {
+      column: 'SLUG',
+      operator: 'EQ',
+      value: params.slug,
+    },
+  });
     return {
       models: {
         product,
@@ -88,8 +88,8 @@ export default async function ProductPage({
   }
 
   return (
-    <div className='mx-auto max-w-screen-2xl px-4'>
-      <div className='flex flex-col w-5/6 rounded-lg border mx-auto border-neutral-200 bg-white p-8 md:p-12 lg:flex-row lg:gap-8 dark:border-neutral-800 dark:bg-black'>
+    <div className='mx-auto max-w-screen-2xl px-4 py-5'>
+      <div className='flex flex-col w-5/6 rounded-lg border mx-auto border-neutral-200 bg-background text-foreground p-8 md:p-12 lg:flex-row lg:gap-8'>
         <div className='h-full w-full basis-full lg:basis-4/6'>
           <Suspense fallback={<Loading />}>
             <Gallery

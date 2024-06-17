@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { Fragment, Suspense, useEffect, useState } from 'react';
 
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { MenuIcon } from '@kanvas/phoenix-rebirth/dist/components/icons';
 import { Menu } from '../../../models/types/shopify/products';
 import Search, { SearchSkeleton } from './search';
 
@@ -35,9 +35,9 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
       <button
         onClick={openMobileMenu}
         aria-label="Open mobile menu"
-        className="flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors md:hidden dark:border-neutral-700 dark:text-white"
+        className="flex h-11 w-11 items-center justify-center rounded-md border text-foreground fill-foreground transition-colors md:hidden"
       >
-        <Bars3Icon className="h-4" />
+        <MenuIcon className="h-4 text-foreground fill-foreground" />
       </button>
       <Transition show={isOpen}>
         <Dialog onClose={closeMobileMenu} className="relative z-50">
@@ -68,7 +68,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                   onClick={closeMobileMenu}
                   aria-label="Close mobile menu"
                 >
-                  <XMarkIcon className="h-6" />
+                  {/* <XMarkIcon className="h-6" /> */}
                 </button>
 
                 <div className="mb-4 w-full">

@@ -7,6 +7,8 @@ import LoadingDots from '../../atoms/loading-dots/index';
 import { ProductVariant } from '../../../models/types/shopify/products';
 import { useSearchParams } from 'next/navigation';
 import { useFormState, useFormStatus } from 'react-dom';
+import { Button } from '@kanvas/phoenix-rebirth/dist/components/base/button';
+import { Show } from '@kanvas/phoenix-rebirth/dist/utils/server';
 
 function SubmitButton({
   availableForSale,
@@ -22,55 +24,44 @@ function SubmitButton({
 
   if (!availableForSale) {
     return (
-      <button
-        aria-disabled
-        className={clsx(buttonClasses, disabledClasses)}
-        disabled
-      >
+      <Button aria-disabled disabled>
         Out Of Stock
-      </button>
+      </Button>
     );
   }
 
   if (!selectedVariantId) {
     return (
-      <button
+      <Button
         aria-label='Please select an option'
         aria-disabled
-        className={clsx(buttonClasses, disabledClasses)}
+        className='w-full'
       >
-        Add To Cart
-      </button>
+        Add To Cart pepe
+      </Button>
     );
   }
 
   return (
-    <button
+    <Button
       onClick={(e: React.FormEvent<HTMLButtonElement>) => {
         if (pending) e.preventDefault();
       }}
       aria-label='Add to cart'
       aria-disabled={pending}
-      className={clsx(buttonClasses, {
-        'hover:opacity-90': true,
-        disabledClasses: pending,
-      })}
+      disabled={pending}
+      className='mt-2 w-full'
     >
-      <div className='absolute left-0 ml-4'>
-        {pending ? (
-          <LoadingDots className='mb-3 bg-white' />
-        ) : (
-          // <PlusIcon className='h-5' />
-          <></>
-        )}
+      <div>
+        <Show when={pending} deps={[pending]} fallback={<>Add To Cart</>}>
+          <LoadingDots className='mb-3 bg-primary-foreground' />
+        </Show>
       </div>
-      Add To Cart
-    </button>
+    </Button>
   );
 }
 
 export function AddToCart({ variants }: { variants: ProductVariant[] }) {
-  // console.log({variants})
   const [message, formAction] = useFormState(addItem, null);
   const searchParams = useSearchParams();
   const defaultVariantId = variants.length === 1 ? variants[0]?.id : undefined;

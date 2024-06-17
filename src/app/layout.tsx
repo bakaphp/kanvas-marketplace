@@ -33,15 +33,13 @@ export default async function RootLayout({
   children: ReactNode;
 }) {
   return (
-    <html lang='en' className={OpenSans.className}>
+    <html lang='en' className={OpenSans.className + ' dark' }>
       <ServerCoreStore sdk={adminClient}>
-        <body className='bg-neutral-50 text-black selection:bg-teal-300 dark:bg-primary-background dark:text-white dark:selection:bg-pink-500 dark:selection:text-white'>
+        <body className='bg-background text-foreground selection:bg-primary selection:text-primary-foreground'>
           <ClientLayout>
             <Navbar />
-            <Suspense>
-              <main>{children}</main>
-              <Footer />
-            </Suspense>
+            <main>{children}</main>
+            <Footer />
           </ClientLayout>
         </body>
       </ServerCoreStore>

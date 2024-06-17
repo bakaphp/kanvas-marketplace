@@ -9,7 +9,9 @@ import CollapsibleProse from './collapse-prose';
 export function useProductDescription(product: any) {
   const variants = product?.variants?.map((variant: any) => {
     return {
-      id: variant?.metadata?.shopify?.id ?'gid://shopify/ProductVariant/' + variant?.metadata?.shopify?.id : null,
+      id: variant?.metadata?.shopify?.id
+        ? 'gid://shopify/ProductVariant/' + variant?.metadata?.shopify?.id
+        : null,
       selectedOptions: [
         {
           name: 'select',
@@ -60,7 +62,7 @@ export function ProductDescription({ product }: { product: any }) {
 
   return (
     <>
-      <div className='mb-6 flex flex-col border-b pb-6 dark:border-neutral-700'>
+      <div className='mb-6 flex flex-col border-b pb-6'>
         <TruncatedTitle title={product.title} maxLength={50} />
       </div>
 
@@ -74,14 +76,10 @@ export function ProductDescription({ product }: { product: any }) {
           className='text-2xl font-bold'
           currencyCode='DOP'
         />
-        <p className='text-xs text-[#E5E7EB]'>+12% VAT Added</p>
+        <p className='text-xs text-foreground/80'>+12% VAT Added</p>
       </div>
-      <Suspense fallback={null}>
-        <VariantSelector options={models.options} variants={models.variants} />
-      </Suspense>
-      <Suspense fallback={null}>
-        <AddToCart variants={models.variants} />
-      </Suspense>
+      <VariantSelector options={models.options} variants={models.variants} />
+      <AddToCart variants={models.variants} />
     </>
   );
 }
