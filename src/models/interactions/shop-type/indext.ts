@@ -27,7 +27,7 @@ export function detectShopType(): ShopType {
     const shopType = process.env.NEXT_PUBLIC_SHOP_TYPE.toLowerCase();
     switch (shopType) {
       case 'informative':
-        return ShopType.INFORMATIVA;
+        return ShopType.INFORMATIVE;
       case 'leads':
         return ShopType.LEADS;
     }
