@@ -83,6 +83,8 @@ export default async function ProductPage({
   const productData =
     models.product?.products?.data?.[0] || ({ files: { data: [] } } as any);
 
+
+
   if (!models.product) {
     return <div>{translate('general.load-fail')}</div>;
   }

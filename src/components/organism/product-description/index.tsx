@@ -19,7 +19,9 @@ export function useProductDescription(product: any) {
         },
       ],
       availableForSale: variant?.channel?.quantity > 0,
-      price: variant?.channel?.price,
+      price: variant?.channel?.price
+        ? variant?.channel?.price
+        : variant?.warehouses?.[0]?.channels?.[0]?.price,
       quantity: variant?.channel?.quantity,
     };
   }) ?? [

@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client/core';
 
 export const GET_PRODUCTS = gql`
-  query getProducts (
+  query(
     $first: Int
     $page: Int
     $whereCondition: QueryProductsWhereWhereConditions
@@ -45,12 +45,28 @@ export const GET_PRODUCTS = gql`
             attributes
           }
         }
-        variants {
+        categories {
           id
           uuid
           name
           slug
+        }
+        warehouses {
+          id
+          name
+          regions {
+            id
+            name
+          }
+        }
+        variants {
+          id
+          products_id
+          uuid
+          name
+          slug
           metadata
+          user_interactions
           description
           short_description
           html_description
@@ -59,16 +75,26 @@ export const GET_PRODUCTS = gql`
           channel {
             price
             quantity
-          }
+        }
           status {
             id
             name
           }
           warehouses {
             warehouses_id
+            status_history {
+              id
+              name
+              from_date
+            }
             channels {
               name
+              price
               is_published
+            }
+            warehouseinfo {
+              id
+              name
             }
           }
           attributes {
@@ -79,6 +105,24 @@ export const GET_PRODUCTS = gql`
         attributes {
           name
           value
+        }
+        productsTypes {
+          id
+          companies_id
+          uuid
+          name
+          description
+          slug
+          weight
+        }
+        companies {
+          id
+          name
+          user {
+            firstname
+            lastname
+            displayname
+          }
         }
       }
       paginatorInfo {
