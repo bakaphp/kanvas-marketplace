@@ -24,7 +24,7 @@ function SubmitButton({
 
   if (!availableForSale) {
     return (
-      <Button aria-disabled disabled>
+      <Button aria-disabled disabled className='w-full cursor-not-allowed'>
         Out Of Stock
       </Button>
     );

@@ -7,9 +7,16 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { useEffect } from 'react';
 import { updateUserData } from '@/models/api/update-user-data';
-import toast, { Toaster } from 'react-hot-toast';
+// import toast, { Toaster } from 'react-hot-toast';
+import { useToast } from '@kanvas/phoenix-rebirth/dist/components/base/use-toast.mjs';
 import { useAtom } from 'jotai/react';
 import { userProfile } from '@/models/state/profile';
+import { Show } from '@kanvas/phoenix-rebirth/dist/utils/server';
+import { Button } from '@kanvas/phoenix-rebirth/dist/components/base/button';
+import { Input } from '@kanvas/phoenix-rebirth/dist/components/base/input';
+import { Label } from '@kanvas/phoenix-rebirth/dist/components/base/label.mjs';
+import { PlusIcon } from '@kanvas/phoenix-rebirth/dist/components/icons';
+
 const initialValues = {
   firstname: '',
   lastname: '',
@@ -24,18 +31,29 @@ const validationSchema = yup.object().shape({
 
 function useProfileForm(profile?: UserData) {
   const [user, setUser] = useAtom(userProfile);
+
+  const { toast, toasts } = useToast();
+
   async function onSubmit(values: typeof initialValues) {
     try {
       await updateUserData(profile?.id!, {
         firstname: values.firstname,
         lastname: values.lastname,
       });
-      toast.success(translate('general.userUpdated'));
+
+      toast({
+        description: translate('general.userUpdated'),
+      });
     } catch (err) {
-      toast.error(translate('general.userUpdateFailed'));
+      toast({
+        description: translate('general.userUpdateFailed'),
+        variant: 'destructive',
+      });
       console.log(err);
     }
   }
+
+  setInterval(() => {}, 1000);
 
   const {
     handleBlur,
@@ -84,12 +102,14 @@ export default function ProfileForm({ profile }: { profile?: UserData }) {
 
   return (
     <>
-      <Toaster position='top-right' reverseOrder={false} />
+      {/* <Toaster position='top-right' reverseOrder={false} /> */}
       <div className='flex-1 p-6'>
         <section className='mt-4'>
-          {false ? (
-            <Atoms.Icons.Spinner size={50} />
-          ) : (
+          <Show
+            when={true}
+            deps={[]}
+            fallback={<Atoms.Icons.Spinner size={50} />}
+          >
             <div className='grid grid-cols-6 gap-4'>
               <div className='border-2 rounded-lg  col-span-4'>
                 <div className='m-5'>
@@ -109,65 +129,62 @@ export default function ProfileForm({ profile }: { profile?: UserData }) {
                     className='space-y-5'
                     onSubmit={operations.handleSubmit}
                   >
-                    <div className='flex flex-col  pt-9'>
-                      <Molecules.Form.TextInput
-                        label={translate('form.last-name-label')}
-                        id='lastname'
-                        theme={{
-                          ...customTheme.textInput,
-                          container:
-                            'flex flex-col gap-[6px] font-normal text-caption-md w-full',
-                        }}
-                        className='w-full bg-background-100 border-[#374151] placeholder:text-white'
-                        value={models.values.lastname}
-                        onChange={operations.handleChange}
-                        helpText={models.errors.lastname}
-                        error={!!models.errors.lastname}
-                      />
-                      <Molecules.Form.TextInput
-                        label={translate('form.first-name-label')}
-                        id='firstname'
-                        theme={{
-                          ...customTheme.textInput,
-                          container:
-                            'flex flex-col gap-[6px] font-normal text-caption-md w-full',
-                        }}
-                        className='w-full bg-background-100 border-[#374151] placeholder:text-white'
-                        value={models.values.firstname}
-                        onChange={operations.handleChange}
-                        helpText={models.errors.firstname}
-                        error={!!models.errors.firstname}
-                      />
+                    <div className='flex flex-col pt-5 space-y-3'>
+                      {/* label={translate('form.last-name-label')} */}
+                      {/* helpText={models.errors.lastname}
+                        error={!!models.errors.lastname} */}
+                      {/* label={translate('form.first-name-label')} */}
+
+                      <div>
+                        <Label id='firstname'>
+                          {translate('form.first-name-label')}
+                        </Label>
+                        <Input
+                          id='firstname'
+                          value={models.values.firstname}
+                          onChange={operations.handleChange}
+                        />
+                      </div>
+
+                      <div>
+                        <Label id='lastname'>
+                          {translate('form.last-name-label')}
+                        </Label>
+                        <Input
+                          id='lastname'
+                          value={models.values.lastname}
+                          onChange={operations.handleChange}
+                        />
+                      </div>
+
+                      {/* helpText={models.errors.firstname}
+                        error={!!models.errors.firstname} */}
                     </div>
-                    <Molecules.Form.TextInput
-                      label={translate('form.email-label')}
-                      id='email'
-                      theme={{
-                        ...customTheme.textInput,
-                        container:
-                          'flex flex-col gap-[6px] font-normal text-caption-md w-full',
-                      }}
-                      value={models.values.email}
-                      className=' bg-background-100 border-[#374151] placeholder:text-white disabled:bg-background-100'
-                      disabled
-                      onChange={operations.handleChange}
-                      helpText={models.errors.email}
-                      error={!!models.errors.email}
-                    />
+
+                    <div>
+                      <Label id='email'>{translate('form.email-label')}</Label>
+
+                      <Input
+                        id='email'
+                        onChange={operations.handleChange}
+                        value={models.values.email}
+                        disabled
+                      />
+                      {/* helpText={models.errors.email}
+                      error={!!models.errors.email} */}
+                    </div>
+
                     <div className='mt-5 sm:mt-[74px] sm:flex sm:flex-row-reverse gap-x-3'>
-                      <Atoms.Button.Solid
-                        type='submit'
-                        className='bg-base-primary-80'
-                      >
-                        <Atoms.Icons.Plus size={20} />
+                      <Button type='submit'>
+                        <PlusIcon size={20} />
                         {translate('general.update')}
-                      </Atoms.Button.Solid>
+                      </Button>
                     </div>
                   </form>
                 </div>
               </div>
             </div>
-          )}
+          </Show>
         </section>
       </div>
     </>

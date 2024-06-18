@@ -28,9 +28,9 @@ export default function Search() {
         classNames={{
           resetIcon: 'hidden',
           submitIcon:
-            'absolute left-0 top-0 ml-2  flex w-4 h-full items-center text-xl fill-primary-foreground ',
+            'absolute left-0 top-0 ml-2  flex w-4 h-full items-center text-xl fill-foreground ',
           input:
-            'w-full bg-primary rounded-lg border px-4 pl-8 py-2 text-sm text-black placeholder:text-primary-foreground',
+            'w-full bg-background rounded-lg border px-4 pl-8 py-2 text-sm text-black placeholder:text-foreground',
         }}
       />
     </div>

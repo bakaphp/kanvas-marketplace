@@ -29,7 +29,7 @@ export default function SearchPage() {
         />
         <SortBy
           classNames={{
-            select: "bg-primary text-primary-foreground rounded"
+            select: "bg-background text-foreground rounded"
           }}
           items={[
             { value: '', label: 'Most Relevant' },

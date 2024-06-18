@@ -14,7 +14,7 @@ const { SITE_NAME } = process.env;
 export default async function Navbar({ type }: { type: string }) {
   const menu = [] as any;
   return (
-    <nav className='relative flex items-center justify-between p-4 lg:px-6 bg-primary text-primary-foreground fill-primary-foreground'>
+    <nav className='relative flex items-center justify-between p-4 lg:px-6 bg-background text-foreground fill-foreground'>
       <div className='block flex-none md:hidden'>
         <MobileMenu menu={menu} />
       </div>

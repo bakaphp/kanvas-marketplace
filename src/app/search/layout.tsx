@@ -11,7 +11,7 @@ export default function SearchLayout({
   return (
     <>
       <Suspense>
-        <div className='h-36 w-full bg-background flex flex-col items-center justify-center text-center'>
+        <div className='h-36 w-full bg-black flex flex-col items-center justify-center text-center text-white'>
           <Atoms.Heading.Four className='text-3xl font-bold'>
             {translate('search.title')}
           </Atoms.Heading.Four>

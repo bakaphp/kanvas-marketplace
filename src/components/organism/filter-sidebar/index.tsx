@@ -65,7 +65,7 @@ export default function FilterSidebar() {
 
   return (
     <div className='order-first w-full flex-none md:max-w-[280px]'>
-      <div className='bg-primary text-primary-foreground h-12 rounded-t-lg'>
+      <div className='bg-secondary text-foreground h-12 rounded-t-lg'>
         <p className='font-bold text-sm pl-2 pt-2'>
           {translate('search.filters')}
         </p>
