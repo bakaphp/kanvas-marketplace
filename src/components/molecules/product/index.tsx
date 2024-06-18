@@ -6,8 +6,7 @@ import { truncateText } from '@/models/interactions/truncate-text';
 import { ShopType } from '@/models/types/shop-type';
 import { ProductInterface } from '@kanvas/core';
 import { Atoms } from '@kanvas/phoenix';
-import { Suspense } from 'react';
-
+import Link from 'next/link';
 interface ProductProps {
   product?: ProductInterface;
   canBuy?: boolean;
@@ -27,21 +26,23 @@ export default function Product({ product, canBuy }: ProductProps) {
   return (
     <div>
       <div className='h-[440px] w-72 text-center rounded-md border-2 border-border-default'>
-        <img src={productImage} alt={productName} className='h-72 w-full' />
+        <Link href={product?.slug}>
+          <img src={productImage} alt={productName} className='h-72 w-full' />
+        </Link>
         <div className='flex flex-col items-center h-[160px] justify-center'>
-          <p className='text-sm text-[#4981BD]'>Brand</p>
-          <Atoms.Body.Two className='font-semibold'>
-            {truncateText(productName, 20)}
-          </Atoms.Body.Two>
-          <Price
-            amount={productPrice}
-            className='font-bold'
-            currencyCode='DOP'
-          />
+          <Link href={product?.slug}>
+            <p className='text-sm text-[#4981BD]'>Brand</p>
+            <Atoms.Body.Two className='font-semibold'>
+              {truncateText(productName, 20)}
+            </Atoms.Body.Two>
+            <Price
+              amount={productPrice}
+              className='font-bold'
+              currencyCode='DOP'
+            />
+          </Link>
           {canBuy && shop === ShopType.SHOPIFY && (
-            <Suspense fallback={null}>
-              <AddToCart variants={models.variants} />
-            </Suspense>
+            <AddToCart variants={models.variants} />
           )}
         </div>
       </div>
