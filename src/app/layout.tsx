@@ -1,3 +1,4 @@
+import { Toaster } from '@kanvas/phoenix-rebirth/dist/components/base/toaster.mjs';
 import { ReactNode, Suspense } from 'react';
 import ClientLayout from './client';
 import Navbar from '@/components/organism/navbar';
@@ -10,6 +11,7 @@ const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
   : 'http://localhost:3000';
+
 
 export const metadata = {
   metadataBase: new URL(baseUrl),
@@ -33,13 +35,14 @@ export default async function RootLayout({
   children: ReactNode;
 }) {
   return (
-    <html lang='en' className={OpenSans.className + ' dark' }>
+    <html lang='en' className={OpenSans.className}>
       <ServerCoreStore sdk={adminClient}>
         <body className='bg-background text-foreground selection:bg-primary selection:text-primary-foreground'>
           <ClientLayout>
             <Navbar />
             <main>{children}</main>
             <Footer />
+            <Toaster />
           </ClientLayout>
         </body>
       </ServerCoreStore>
