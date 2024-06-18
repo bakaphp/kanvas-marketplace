@@ -76,7 +76,7 @@ export function ProductDescription({ product }: { product: any }) {
           className='text-2xl font-bold'
           currencyCode='DOP'
         />
-        <p className='text-xs text-foreground/80'>+12% VAT Added</p>
+        <p className='text-xs text-white/80'>+12% VAT Added</p>
       </div>
       <VariantSelector options={models.options} variants={models.variants} />
       <AddToCart variants={models.variants} />

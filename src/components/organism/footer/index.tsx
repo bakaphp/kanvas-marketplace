@@ -38,7 +38,7 @@ function SocialMediaSection() {
 function AppLogo() {
   return (
     <Link
-      className='flex items-center gap-2 text-black md:pt-1 dark:text-white'
+      className='flex items-center gap-2 text-white md:pt-1'
       href='/'
     >
       <LogoSquare size='sm' />
@@ -53,7 +53,7 @@ type CategoryItemProps = {
 
 function CategoryItem({ children }: CategoryItemProps) {
   return (
-    <div className='py-[10px] px-[14px] bg-primary text-primary-foreground rounded-md flex justify-center items-center border-[1px] border-default !m-0'>
+    <div className='py-[10px] px-[14px] bg-background text-foreground rounded-md flex justify-center items-center border-[1px] border-default !m-0'>
       <p>{children}</p>
     </div>
   );
@@ -66,7 +66,7 @@ export default async function Footer() {
   const copyrightName = COMPANY_NAME || SITE_NAME || '';
 
   return (
-    <footer className='text-sm text-foreground bg-background py-[50px] px-0 flex items-center justify-center w-full'>
+    <footer className='text-sm text-white bg-black py-[50px] px-0 flex items-center justify-center w-full'>
       <div className='max-w-[1250px] w-full flex flex-col gap-6'>
         <div className='w-full flex justify-between items-center'>
           <AppLogo />

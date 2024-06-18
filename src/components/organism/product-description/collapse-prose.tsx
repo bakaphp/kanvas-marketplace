@@ -13,7 +13,7 @@ const CollapsibleProse = ({ html, maxLength }: any) => {
 
   return (
     <div>
-      <Prose html={isExpanded ? html : truncatedHtml} className="mb-6 text-sm leading-tight dark:text-white/[60%]" />
+      <Prose html={isExpanded ? html : truncatedHtml} className="mb-6 text-sm leading-tight text-white" />
       {html.length > maxLength && (
         <button
           onClick={toggleExpansion}
