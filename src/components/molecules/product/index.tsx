@@ -26,11 +26,11 @@ export default function Product({ product, canBuy }: ProductProps) {
   return (
     <div>
       <div className='h-[440px] w-72 text-center rounded-md border-2 border-border-default'>
-        <Link href={product?.slug}>
+        <Link href={`/product/${product?.slug}`}>
           <img src={productImage} alt={productName} className='h-72 w-full' />
         </Link>
         <div className='flex flex-col items-center h-[160px] justify-center'>
-          <Link href={product?.slug}>
+          <Link href={`/product/${product?.slug}`}>
             <p className='text-sm text-[#4981BD]'>Brand</p>
             <Atoms.Body.Two className='font-semibold'>
               {truncateText(productName, 20)}
