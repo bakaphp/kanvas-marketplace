@@ -2,6 +2,7 @@ import { NumericMenu } from '@/components/molecules/numeric-menu';
 import FilterItem from '@/components/molecules/filter-item';
 import { RefinementList } from 'react-instantsearch';
 import { translate } from '@/translate';
+import { RatingMenu } from '@/components/molecules/rating-menu';
 
 function useFilterSidebar() {
   const items = [
@@ -50,6 +51,11 @@ function useFilterSidebar() {
           ]}
         />
       ),
+    },
+    {
+      id: 'rating',
+      title: 'Rating',
+      content: <RatingMenu attribute='variants.warehouses.price' />,
     },
   ];
 
