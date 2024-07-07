@@ -1,5 +1,5 @@
 'use client';
-import { customTheme } from '@/theme/theme.phoenix';
+
 import { Atoms, Molecules } from '@kanvas/phoenix';
 import { translate } from '@/translate';
 import { UserData } from '@kanvas/core';

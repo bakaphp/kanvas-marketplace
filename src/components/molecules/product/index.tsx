@@ -17,8 +17,8 @@ export default function Product({ product, canBuy }: ProductProps) {
   const productName = product?.name ?? 'Product Name';
   const shop = detectShopType();
   //   @ts-ignore
-  const productPrice = product?.variants?.[0].channel.price
-    ? product?.variants?.[0].channel.price
+  const productPrice = product?.variants?.[0]?.channel?.price
+    ? product?.variants?.[0]?.channel?.price
     : //   @ts-ignore
       product?.variants?.[0].warehouses?.[0]?.channels[0].price ?? '0';
   const { models } = useProductDescription(product);
