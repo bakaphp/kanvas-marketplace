@@ -1,6 +1,5 @@
 import { OrderBy, WhereCondition } from '@kanvas/core';
 import { GET_PRODUCTS } from '../queries/products';
-import { app } from '@/models/services/kanvas';
 import { adminClient } from '@/models/services/kanvas/admin';
 
 export async function getProduct(
