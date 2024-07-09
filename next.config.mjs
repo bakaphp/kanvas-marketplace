@@ -10,7 +10,12 @@ const nextConfig = {
     ];
   },
   images: {
-    domains: ['i.redd.it', 'cdn.shopify.com', "m.media-amazon.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
   },
 };
 

@@ -1,12 +1,13 @@
 import { truncateText } from '@/models/interactions/truncate-text';
 import { Atoms } from '@kanvas/phoenix';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Hit({ hit }: { hit: any }) {
   return (
     <Link href={`/product/${hit.slug}`}>
       <div className='h-[440px] w-72 text-center rounded-md border-2  border-border-default'>
-        <img
+        <Image
           src={hit.files?.[0]?.url ?? '/default_image.svg'}
           alt={hit.name}
           className='h-72 w-full'
