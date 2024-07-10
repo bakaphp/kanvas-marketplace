@@ -29,7 +29,13 @@ export default function Product({ product, canBuy }: ProductProps) {
     <div>
       <div className='h-[440px] w-72 text-center rounded-md border-2 border-border-default'>
         <Link href={`/product/${product?.slug}`}>
-          <Image src={productImage} alt={productName} className='h-72 w-full' />
+          <Image
+            src={productImage}
+            alt={productName}
+            width={284}
+            height={288}
+            loading='lazy'
+          />
         </Link>
         <div className='flex flex-col items-center h-[160px] justify-center'>
           <Link href={`/product/${product?.slug}`}>

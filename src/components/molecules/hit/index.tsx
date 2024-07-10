@@ -10,7 +10,9 @@ export default function Hit({ hit }: { hit: any }) {
         <Image
           src={hit.files?.[0]?.url ?? '/default_image.svg'}
           alt={hit.name}
-          className='h-72 w-full'
+          width={284}
+          height={288}
+          loading='lazy'
         />
         <div className='flex flex-col items-center h-[160px] justify-center'>
           <p className='text-sm text-[#4981BD]'>Brand</p>
