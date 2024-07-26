@@ -45,7 +45,7 @@ export function AccountSidebar({ items }: Props) {
                     'text-foreground': isSelected,
                   })}
                 >
-                  {item.title}
+                  {item?.title}
                 </Link>
               </li>
             );

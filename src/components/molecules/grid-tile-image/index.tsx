@@ -42,7 +42,7 @@ export function GridTileImage({
 
       <Show when={!!label} deps={[label]}>
         <Label
-          title={label!.title}
+          title={label!?.title}
           amount={label!.amount}
           currencyCode={label!.currencyCode}
           position={label!.position}

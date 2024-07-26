@@ -72,7 +72,7 @@ export function ProductDescription({ product }: { product: any }) {
   return (
     <>
       <div className='mb-6 flex flex-col border-b pb-6'>
-        <TruncatedTitle title={product.title} maxLength={50} />
+        <TruncatedTitle title={product?.title} maxLength={50} />
       </div>
 
       <Show when={Boolean(product.descriptionHtml)} deps={[product]}>

@@ -82,7 +82,7 @@ export default function FilterSidebar() {
         {(item) => (
           <FilterItem
             key={item.id}
-            title={item.title}
+            title={item?.title}
             content={item.content}
             id={item.id}
           />

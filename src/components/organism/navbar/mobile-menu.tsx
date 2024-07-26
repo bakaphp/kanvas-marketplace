@@ -83,10 +83,10 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                       {(item: Menu) => (
                         <li
                           className='py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white'
-                          key={item.title}
+                          key={item?.title}
                         >
                           <Link href={item.path} onClick={closeMobileMenu}>
-                            {item.title}
+                            {item?.title}
                           </Link>
                         </li>
                       )}

@@ -32,7 +32,7 @@ export default function FilterItem(props: Props) {
         onClick={toggleOpen}
         className='flex w-full justify-between px-2 py-2 text-left text-sm font-medium border-2 border-t-0 border-border-default'
       >
-        <span>{props.title}</span>
+        <span>{props?.title}</span>
         <ChevronUpIcon
           className={cn(
             { 'rotate-180 transform': isOpen },

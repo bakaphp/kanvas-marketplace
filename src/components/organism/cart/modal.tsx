@@ -130,7 +130,7 @@ export default function CartModal({ cart }: { cart: Cart }) {
                                     alt={
                                       item.merchandise.product?.featuredImage
                                         ?.altText ||
-                                      item.merchandise.product.title
+                                      item.merchandise.product?.title
                                     }
                                     src={
                                       item.merchandise.product?.featuredImage
@@ -141,17 +141,17 @@ export default function CartModal({ cart }: { cart: Cart }) {
 
                                 <div className='flex flex-1 flex-col text-base'>
                                   <span className='leading-tight'>
-                                    {item.merchandise.product.title}
+                                    {item.merchandise.product?.title}
                                   </span>
 
                                   <Show
                                     when={
-                                      item.merchandise.title !== DEFAULT_OPTION
+                                      item.merchandise?.title !== DEFAULT_OPTION
                                     }
                                     deps={[item]}
                                   >
                                     <p className='text-sm text-neutral-500'>
-                                      {item.merchandise.title}
+                                      {item.merchandise?.title}
                                     </p>
                                   </Show>
                                 </div>
