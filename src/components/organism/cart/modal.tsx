@@ -89,7 +89,7 @@ export default function CartModal({ cart }: { cart: Cart }) {
               >
                 <div className='flex h-full flex-col justify-between overflow-hidden p-1'>
                   <ul className='flex-grow overflow-auto py-4'>
-                    <For each={cart.lines}>
+                    <For each={cart?.lines ?? []}>
                       {(item, { key }) => {
                         const merchandiseSearchParams =
                           {} as MerchandiseSearchParams;
