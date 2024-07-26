@@ -11,7 +11,7 @@ export type UseRatingMenuProps = RatingMenuConnectorParams;
 
 export function useRatingMenu(props?: UseRatingMenuProps) {
   return useConnector<RatingMenuConnectorParams, RatingMenuWidgetDescription>(
-    //@ts-expect-error
+    //@ts-ignore
     connectRatingMenu,
     props,
   );
