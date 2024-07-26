@@ -13,6 +13,7 @@ export default function Hit({ hit }: { hit: any }) {
           width={284}
           height={288}
           loading='lazy'
+          className='rounded-t-md'
         />
         <div className='flex flex-col items-center h-[160px] justify-center'>
           <p className='text-sm text-[#4981BD]'>Brand</p>

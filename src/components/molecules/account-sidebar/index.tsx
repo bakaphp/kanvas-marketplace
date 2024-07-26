@@ -1,5 +1,6 @@
 'use client';
 
+import { For } from '@kanvas/phoenix-rebirth/dist/utils/server';
 import { cn } from '@kanvas/phoenix-rebirth/dist/lib/utils';
 import { useRouter, usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
@@ -27,27 +28,29 @@ export function AccountSidebar({ items }: Props) {
   return (
     <div className='w-64 p-4 mt-6'>
       <ul>
-        {items.map((item: Item) => {
-          const isSelected = selectedKey === item.link;
-          return (
-            <li
-              key={item.key}
-              className={cn('mb-4 p-2 ', {
-                'border-b-4 border-primary': isSelected,
-              })}
-            >
-              <Link
-                href={item.link}
-                onClick={() => setSelectedKey(item.link)}
-                className={cn('cursor-pointer pl-2', {
-                  'text-foreground': isSelected,
+        <For each={items}>
+          {(item: Item) => {
+            const isSelected = selectedKey === item.link;
+            return (
+              <li
+                key={item.key}
+                className={cn('mb-4 p-2 ', {
+                  'border-b-4 border-primary': isSelected,
                 })}
               >
-                {item.title}
-              </Link>
-            </li>
-          );
-        })}
+                <Link
+                  href={item.link}
+                  onClick={() => setSelectedKey(item.link)}
+                  className={cn('cursor-pointer pl-2', {
+                    'text-foreground': isSelected,
+                  })}
+                >
+                  {item.title}
+                </Link>
+              </li>
+            );
+          }}
+        </For>
       </ul>
     </div>
   );

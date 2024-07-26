@@ -7,6 +7,7 @@ import { TruncatedTitle } from './title-truncated';
 import CollapsibleProse from './collapse-prose';
 import { detectShopType } from '@/models/interactions/shop-type/indext';
 import { ShopType } from '@/models/types/shop-type';
+import { Show } from '@kanvas/phoenix-rebirth/dist/utils/server';
 
 export function useProductDescription(product: any) {
   const shopType = detectShopType();
@@ -74,9 +75,9 @@ export function ProductDescription({ product }: { product: any }) {
         <TruncatedTitle title={product.title} maxLength={50} />
       </div>
 
-      {product.descriptionHtml ? (
+      <Show when={Boolean(product.descriptionHtml)} deps={[product]}>
         <CollapsibleProse html={product.descriptionHtml} maxLength={500} />
-      ) : null}
+      </Show>
 
       <div>
         <Price
@@ -86,7 +87,11 @@ export function ProductDescription({ product }: { product: any }) {
         />
         <p className='text-xs text-white/80'>+12% VAT Added</p>
       </div>
-      {models.shopType === ShopType.SHOPIFY && (
+
+      <Show
+        when={models.shopType === ShopType.SHOPIFY}
+        deps={[models.shopType]}
+      >
         <>
           <VariantSelector
             options={models.options}
@@ -94,7 +99,7 @@ export function ProductDescription({ product }: { product: any }) {
           />
           <AddToCart variants={models.variants} />
         </>
-      )}
+      </Show>
     </>
   );
 }

@@ -3,6 +3,7 @@ import FilterItem from '@/components/molecules/filter-item';
 import { RefinementList } from 'react-instantsearch';
 import { translate } from '@/translate';
 import { RatingMenu } from '@/components/molecules/rating-menu';
+import { For } from '@kanvas/phoenix-rebirth/dist/utils/server';
 
 function useFilterSidebar() {
   const items = [
@@ -76,14 +77,17 @@ export default function FilterSidebar() {
           {translate('search.filters')}
         </p>
       </div>
-      {models.items.map((item) => (
-        <FilterItem
-          key={item.id}
-          title={item.title}
-          content={item.content}
-          id={item.id}
-        />
-      ))}
+
+      <For each={models.items}>
+        {(item) => (
+          <FilterItem
+            key={item.id}
+            title={item.title}
+            content={item.content}
+            id={item.id}
+          />
+        )}
+      </For>
     </div>
   );
 }
