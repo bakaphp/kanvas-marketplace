@@ -191,8 +191,8 @@ export default function CartModal({ cart }: { cart: Cart }) {
                       <p>Taxes</p>
                       <Price
                         className='text-right text-base text-foreground'
-                        amount={cart.cost.totalTaxAmount.amount}
-                        currencyCode={cart.cost.totalTaxAmount.currencyCode}
+                        amount={cart?.cost?.totalTaxAmount?.amount}
+                        currencyCode={cart?.cost?.totalTaxAmount?.currencyCode}
                       />
                     </div>
                     <div className='mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 text-foreground/80'>
@@ -203,14 +203,14 @@ export default function CartModal({ cart }: { cart: Cart }) {
                       <p>Total</p>
                       <Price
                         className='text-right text-base text-foreground'
-                        amount={cart.cost.totalAmount.amount}
-                        currencyCode={cart.cost.totalAmount.currencyCode}
+                        amount={cart?.cost?.totalAmount?.amount}
+                        currencyCode={cart?.cost?.totalAmount?.currencyCode}
                       />
                     </div>
                   </div>
                   <Button>
                     <a
-                      href={cart.checkoutUrl}
+                      href={cart?.checkoutUrl}
                       className='block w-full p-3 text-center text-sm font-medium text-primary-foreground opacity-90 hover:opacity-100'
                     >
                       Proceed to Checkout
