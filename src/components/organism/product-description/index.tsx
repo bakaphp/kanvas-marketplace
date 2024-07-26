@@ -75,8 +75,8 @@ export function ProductDescription({ product }: { product: any }) {
         <TruncatedTitle title={product?.title} maxLength={50} />
       </div>
 
-      <Show when={Boolean(product.descriptionHtml)} deps={[product]}>
-        <CollapsibleProse html={product.descriptionHtml} maxLength={500} />
+      <Show when={Boolean(product?.descriptionHtml)} deps={[product]}>
+        <CollapsibleProse html={product?.descriptionHtml} maxLength={500} />
       </Show>
 
       <div>
@@ -95,9 +95,9 @@ export function ProductDescription({ product }: { product: any }) {
         <>
           <VariantSelector
             options={models.options}
-            variants={models.variants}
+            variants={models?.variants}
           />
-          <AddToCart variants={models.variants} />
+          <AddToCart variants={models?.variants} />
         </>
       </Show>
     </>

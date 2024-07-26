@@ -77,7 +77,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                   </Suspense>
                 </div>
 
-                <Show when={Boolean(menu.length)} deps={[menu]}>
+                <Show when={Boolean(menu?.length)} deps={[menu]}>
                   <ul className='flex w-full flex-col'>
                     <For each={menu}>
                       {(item: Menu) => (

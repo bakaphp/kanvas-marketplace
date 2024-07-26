@@ -56,8 +56,8 @@ export default function AuthForm({
       >
         <h5 className='text-2xl font-bold'>{title}</h5>
         <div className='flex flex-col gap-3 w-[350px]'>
-          <Show when={Boolean(formFields.length)} deps={[formFields.length]}>
-            <For each={formFields}>
+          <Show when={Boolean(formFields?.length)} deps={[formFields?.length]}>
+            <For each={formFields ?? []}>
               {(formFieldProps, { index }) => (
                 <FormField key={`form-field-${index}`} {...formFieldProps} />
               )}

@@ -39,15 +39,15 @@ export function Gallery({
         <Show when={!!images[imageIndex]} deps={[images]}>
           <Image
             className='h-[640px] w-[660px] object-cover rounded-md'
-            alt={images[imageIndex].altText}
+            alt={images[imageIndex]?.altText}
             // sizes="(min-width: 1024px) 66vw, 100vw"
-            src={images[imageIndex].src}
+            src={images[imageIndex]?.src}
             priority={true}
             fill
           />
         </Show>
 
-        <Show when={images.length > 1} deps={[images]}>
+        <Show when={images?.length > 1} deps={[images]}>
           <div className='absolute bottom-[15%] flex w-full justify-center'>
             <div className='mx-auto flex h-11 items-center rounded-full border border-white bg-neutral-50/80 text-neutral-500 backdrop-blur dark:border-black dark:bg-neutral-900/80'>
               <Link
@@ -72,7 +72,7 @@ export function Gallery({
         </Show>
       </div>
 
-      <Show when={Boolean(images.length)} deps={[images]}>
+      <Show when={Boolean(images?.length)} deps={[images]}>
         <ul className='my-12 flex items-center justify-center gap-2 overflow-auto py-1 lg:mb-0'>
           <For each={images}>
             {(image, { index }) => {

@@ -141,17 +141,17 @@ export default function CartModal({ cart }: { cart: Cart }) {
 
                                 <div className='flex flex-1 flex-col text-base'>
                                   <span className='leading-tight'>
-                                    {item.merchandise.product?.title}
+                                    {item?.merchandise?.product?.title}
                                   </span>
 
                                   <Show
                                     when={
-                                      item.merchandise?.title !== DEFAULT_OPTION
+                                      item?.merchandise?.title !== DEFAULT_OPTION
                                     }
                                     deps={[item]}
                                   >
                                     <p className='text-sm text-neutral-500'>
-                                      {item.merchandise?.title}
+                                      {item?.merchandise?.title}
                                     </p>
                                   </Show>
                                 </div>
@@ -159,9 +159,9 @@ export default function CartModal({ cart }: { cart: Cart }) {
                               <div className='flex h-16 flex-col justify-between'>
                                 <Price
                                   className='flex justify-end space-y-2 text-right text-sm'
-                                  amount={item.cost.totalAmount.amount}
+                                  amount={item?.cost?.totalAmount?.amount}
                                   currencyCode={
-                                    item.cost.totalAmount.currencyCode
+                                    item?.cost?.totalAmount?.currencyCode
                                   }
                                 />
                                 <div className='ml-auto flex h-9 flex-row items-center rounded-md border border-neutral-200'>

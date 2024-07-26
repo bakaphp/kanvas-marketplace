@@ -41,10 +41,10 @@ export default function ProfileMenu() {
   return (
     <>
       <Show
-        when={!models.user}
-        deps={[models.user]}
+        when={!models?.user}
+        deps={[models?.user]}
         fallback={
-          <UserMenuDropDown user={models.user!} logOut={operations.logout} />
+          <UserMenuDropDown user={models?.user!} logOut={operations.logout} />
         }
       >
         <Link className='mr-3 mt-3 text-sm' href={'/signin'}>

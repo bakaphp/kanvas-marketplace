@@ -36,16 +36,16 @@ export function GridTileImage({
             'transition duration-300 ease-in-out group-hover:scale-105':
               isInteractive,
           })}
-          {...props}
+          {...(props ?? {})}
         />
       </Show>
 
       <Show when={!!label} deps={[label]}>
         <Label
           title={label!?.title}
-          amount={label!.amount}
-          currencyCode={label!.currencyCode}
-          position={label!.position}
+          amount={label!?.amount}
+          currencyCode={label!?.currencyCode}
+          position={label!?.position}
         />
       </Show>
     </div>

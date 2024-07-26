@@ -20,7 +20,7 @@ export function TruncatedTitle({
           <h1 className='mb-2 text-4xl font-bold'>
             {open ? title : truncatedTitle}
             <Disclosure.Button className='text-4xl font-bold'>
-              <Show when={title.length > maxLength} deps={[title, maxLength]}>
+              <Show when={title?.length > maxLength} deps={[title, maxLength]}>
                 <span className=' text-blue-500'>
                   <Show
                     when={open}

@@ -30,13 +30,13 @@ export default async function Navbar({ type }: { type: string }) {
             </div>
           </Link>
 
-          <Show when={Boolean(menu.length)} deps={[menu]}>
+          <Show when={Boolean(menu?.length)} deps={[menu]}>
             <ul className='hidden gap-6 text-sm md:flex md:items-center'>
               <For each={menu}>
                 {(item: any) => (
                   <li key={item?.title}>
                     <Link
-                      href={item.path}
+                      href={item?.path}
                       className='text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300'
                     >
                       {item?.title}
