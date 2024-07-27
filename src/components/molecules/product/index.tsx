@@ -35,6 +35,7 @@ export default function Product({ product, canBuy }: ProductProps) {
             width={284}
             height={288}
             loading='lazy'
+            className='rounded-t-md'
           />
         </Link>
         <div className='flex flex-col items-center h-[160px] justify-center'>

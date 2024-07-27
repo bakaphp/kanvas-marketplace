@@ -1,3 +1,4 @@
+import { For } from '@kanvas/phoenix-rebirth/dist/utils/server';
 import Product from '@/components/molecules/product';
 import { getProduct } from '@/models/api/products';
 import { translate } from '@/translate';
@@ -26,11 +27,13 @@ export default async function RelatedProducts({ id }: { id: string }) {
         {translate('general.related-products')}
       </h2>
       <ul className='flex w-full gap-4  pt-1'>
-        {relatedProducts.map((product: any) => (
-          <li key={product.slug} className=''>
-            <Product product={product} canBuy />
-          </li>
-        ))}
+        <For each={relatedProducts}>
+          {(product: any) => (
+            <li key={product.slug} className=''>
+              <Product product={product} canBuy />
+            </li>
+          )}
+        </For>
       </ul>
     </div>
   );
