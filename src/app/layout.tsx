@@ -1,12 +1,12 @@
-import { Toaster } from '@kanvas/phoenix-rebirth/dist/components/base/toaster.mjs';
-import { ReactNode, Suspense } from 'react';
-import ClientLayout from './client';
+import "./globals.css"
+import { detectShopType } from '@/hooks/shop-type/indext';
+import Footer from '@/ui/blocks/footer';
 import Navbar from '@/ui/blocks/navbar';
 import { Open_Sans, Inter } from 'next/font/google';
-import './globals.css';
-import { GoogleAnalytics } from '@next/third-parties/google';
-import Footer from '@/ui/blocks/footer';
-import { detectShopType } from '@/hooks/shop-type/indext';
+import { ReactNode } from 'react';
+import { Toaster } from '@kanvas/phoenix-rebirth/dist/components/base/toaster.mjs';
+import ClientLayout from './client';
+
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME_NEXT_NEXT } = process.env;
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
@@ -48,7 +48,7 @@ export default async function RootLayout({
           <Toaster />
         </ClientLayout>
       </body>
-      <GoogleAnalytics gaId='G-JVD3GX40VX' />
+      {/* <GoogleAnalytics gaId='G-JVD3GX40VX' /> */}
     </html>
   );
 }

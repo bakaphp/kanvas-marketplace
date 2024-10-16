@@ -6,9 +6,8 @@ const plugin = require('tailwindcss/plugin');
 module.exports = createTailwindConfig({
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/ui/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    './node_modules/@kanvas/phoenix/dist/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {

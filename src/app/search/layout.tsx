@@ -69,13 +69,13 @@ export default function SearchLayout({
     <>
       <Suspense>
         <div className='relative h-96 w-full flex flex-col items-center justify-center text-center text-white'>
-          <Image
+          {/* <Image
             src='/images/search.png'
             alt=''
             layout='fill'
             objectFit='cover'
             className='z-0'
-          />
+          /> */}
           <div className='absolute inset-0 bg-black opacity-50 z-10'></div>
           <div className='relative z-20'>
             <h4 className='text-3xl font-bold'>{translate('search.title')}</h4>

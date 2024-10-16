@@ -12,7 +12,6 @@ export default function Hit({
   hit: any;
   buttonColor?: string;
 }) {
-  const microCenterID = hit?.custom_fields?.MICRO_CENTER_USA_URL;
   const isOutOfStock = hit.variants?.[0]?.warehouses?.[0]?.quantity <= 0;
 
   const handleButtonClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -36,22 +35,6 @@ export default function Hit({
           <p className='text-sm font-semibold mb-4'>
             ${hit?.price ?? hit?.variants?.[0]?.channels?.[0]?.price}
           </p>
-          <Button
-            className={cn(
-              'w-full bg-black text-white py-3 h-12 hover:bg-black',
-              buttonColor,
-            )}
-            disabled={isOutOfStock}
-          >
-            <a
-              href={microCenterID}
-              target='_blank'
-              onClick={handleButtonClick}
-              className='w-full'
-            >
-              {isOutOfStock ? 'Out of Stock' : 'Where to Buy'}
-            </a>
-          </Button>
         </div>
       </div>
     </Link>
