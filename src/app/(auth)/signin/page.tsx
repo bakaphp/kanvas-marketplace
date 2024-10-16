@@ -1,9 +1,9 @@
 'use client';
 import { FormikHelpers, useFormik } from 'formik';
 import * as yup from 'yup';
-import AuthForm from '@/components/organism/auth-form';
+import AuthForm from '@/ui/blocks/auth-form';
 import { useRouter } from 'next/navigation';
-import { login } from '@/models/api/login';
+import { login } from '@/api/login';
 import { translate } from '@/translate';
 
 const validationSchema = yup.object().shape({

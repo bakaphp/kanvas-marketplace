@@ -19,7 +19,7 @@ To configure your Kanvas Marketplace, you'll need to set the following environme
 ```shell
 # Company Information
 COMPANY_NAME="Kanvas"
-SITE_NAME="Kanvas Marketplace"
+SITE_NAME_NEXT="Kanvas Marketplace"
 
 # Shopify Configuration
 SHOPIFY_REVALIDATION_SECRET="your-shopify-revalidation-secret"
@@ -51,12 +51,10 @@ In your ClientLayout component, ensure you set up the InstantSearch from Algolia
 import { searchClient } from '@/models/services/algolia';
 import { PropsWithChildren } from 'react';
 import { InstantSearch } from 'react-instantsearch';
-import { ClientCoreStore } from '@kanvas/phoenix/dist/client';
 import { adminClient } from '@/models/services/kanvas/admin';
 
 export default function ClientLayout({ children }: PropsWithChildren) {
   return (
-    <ClientCoreStore sdk={adminClient}>
       <InstantSearch
         searchClient={searchClient} // here
         indexName={process.env.NEXT_PUBLIC_ALGOLIA_PRODUCTS_INDEX}
@@ -65,12 +63,11 @@ export default function ClientLayout({ children }: PropsWithChildren) {
       >
         {children}
       </InstantSearch>
-    </ClientCoreStore>
   );
 }
 
 
-// models/services/algolia/index.ts
+// services/algolia/index.ts
 
 import algoliasearch from "algoliasearch/lite";
 
@@ -80,7 +77,7 @@ export const searchClient = algoliasearch(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID
 To configure the sidebar filters for Algolia, you will need to customize your search and filtering logic. Here's an example setup:
 
 ```typescript
-// src\components\organism\filter-sidebar\index.tsx
+// src\ui\blocks\filter-sidebar\index.tsx
 
 import FilterItem from '@/components/molecules/filter-item';
 import { NumericMenu } from '@/components/molecules/numeric-menu';

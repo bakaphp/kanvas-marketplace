@@ -1,4 +1,4 @@
-import OpengraphImage from '../components/molecules/opengraph-image';
+import OpengraphImage from '../ui/blocks/opengraph-image';
 
 export const runtime = 'edge';
 

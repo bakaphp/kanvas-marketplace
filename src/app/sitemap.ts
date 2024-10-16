@@ -1,4 +1,5 @@
-import { getProduct } from '@/models/api/products';
+import { getProduct } from '@/api/products';
+import { adminClient } from '@/services/kanvas/admin';
 import { MetadataRoute } from 'next';
 
 const BASE_URL = process.env.NEXT_PUBLIC_VERCEL_URL
