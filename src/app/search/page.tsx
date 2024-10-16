@@ -39,18 +39,8 @@ export default function SearchPage() {
               select: 'bg-background text-foreground rounded',
             }}
             items={[
-              {
-                value: 'prod-microcenter_product',
-                label: 'Latest Added',
-              },
-              {
-                value: 'prod-microcenter_product-price-high',
-                label: 'Price - High to low',
-              },
-              {
-                value: 'prod-microcenter_product-price-lowest',
-                label: 'Price - Low to high',
-              },
+              { value: '', label: 'Most Relevant' },
+              { value: 'product-asc', label: 'A-Z' },
             ]}
           />
         </div>
