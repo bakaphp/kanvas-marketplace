@@ -1,10 +1,10 @@
 'use client';
 import { FormikHelpers, useFormik } from 'formik';
 import * as yup from 'yup';
-import AuthForm from '@/components/organism/auth-form';
+import AuthForm from '@/ui/blocks/auth-form';
 import { useRouter } from 'next/navigation';
 import { translate } from '@/translate';
-import { register } from '@/models/api/register';
+import { register } from '@/api/register';
 
 const validationSchema = yup.object().shape({
   firstname: yup.string().required(),

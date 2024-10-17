@@ -1,11 +1,11 @@
-import { Gallery } from '@/components/organism/gallery';
-import { ProductDescription } from '@/components/organism/product-description';
+import { Gallery } from '@/ui/blocks/gallery';
+import { ProductDescription } from '@/ui/blocks/product-description';
 import { Suspense } from 'react';
 import Loading from './loading';
 import { translate } from '@/translate';
-import { adminClient as app } from '@/models/services/kanvas/admin';
-import RelatedProducts from '@/components/organism/related-products';
-import { getProduct } from '@/models/api/products';
+import { adminClient as app } from '@/services/kanvas/admin';
+import RelatedProducts from '@/ui/blocks/related-products';
+import { getProduct } from '@/api/products';
 
 export const runtime = 'edge';
 

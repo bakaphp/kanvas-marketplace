@@ -1,7 +1,9 @@
 'use client';
-import ProfileForm from '@/components/organism/profile-form';
-import { app } from '@/models/services/kanvas';
+
+import { app } from '@/services/kanvas';
+import ProfileForm from '@/ui/blocks/profile-form';
 import { useAsync } from 'react-use';
+
 function useAccountPage() {
   const user = useAsync(async () => {
     const res = await app.users.getUserData();

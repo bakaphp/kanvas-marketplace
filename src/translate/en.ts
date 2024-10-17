@@ -6,9 +6,9 @@ export default {
     update: 'Update',
     userUpdated: 'The user has been successfully updated',
     userUpdateFailed: 'An error occurred while trying to update the user.',
-    "show-more": 'Show More',
-    "show-less": "Show Less",
-    "related-products": "Related Products"
+    'show-more': 'Show More',
+    'show-less': 'Show Less',
+    'related-products': 'Related Products',
   },
   'user-overview': {
     title: 'Personal Information',
@@ -60,7 +60,7 @@ export default {
         placeholder: 'Add your password',
       },
       submit: 'Login',
-      noAccount: 'Don\'t have an account?',
+      noAccount: "Don't have an account?",
       signUp: 'Sign up',
       forgotPassword: 'Forgot your password?',
       rememberMe: 'Remember me',
