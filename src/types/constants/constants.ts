@@ -52,63 +52,19 @@ export const SHOPIFY_GRAPHQL_API_ENDPOINT = '/api/2023-01/graphql.json';
 
 export const FOOTER_CATEGORY = [
   {
-    title: 'Shop',
+    title: 'Sections',
     items: [
       {
-        label: 'category',
-        href: '/search?categories=example',
+        label: 'Listings',
+        href: '/listings',
       },
       {
-        label: 'category',
-        href: '/search?categories=example',
+        label: 'Collections',
+        href: '/collections',
       },
       {
-        label: 'category',
-        href: '/search?categories=example',
-      },
-      {
-        label: 'category',
-        href: '/search?categories=example',
-      },
-    ],
-  },
-  {
-    title: 'Company',
-    items: [
-      {
-        label: 'category',
-        href: '/search?categories=example',
-      },
-      {
-        label: 'category',
-        href: '/search?categories=example',
-      },
-      //{ href: '/site-map', label: 'Site Map' },
-    ],
-  },
-  {
-    title: 'Social',
-    items: [
-      {
-        label: 'category',
-        href: '/search?categories=example',
-      },
-      {
-        label: 'category',
-        href: '/search?categories=example',
-      },
-    ],
-  },
-  {
-    title: 'Legal',
-    items: [
-      {
-        label: 'category',
-        href: '/search?categories=example',
-      },
-      {
-        label: 'category',
-        href: '/search?categories=example',
+        label: 'How it works',
+        href: '/howitworks',
       },
     ],
   },

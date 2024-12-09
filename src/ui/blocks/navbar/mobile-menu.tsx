@@ -42,7 +42,7 @@ export default function MobileMenu({ menu }: { menu: any }) {
       </button>
       {isOpen && (
         <div className='fixed inset-0 z-50'>
-          <div className='p-4 bg-white dark:bg-black'>
+          <div className='p-4 bg-white'>
             <div className='flex justify-between items-center mb-4'>
               <Link
                 href='/'
@@ -51,7 +51,7 @@ export default function MobileMenu({ menu }: { menu: any }) {
                 <LogoSquare />
               </Link>
               <button
-                className='flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white'
+                className='flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors'
                 onClick={closeMobileMenu}
                 aria-label='Close mobile menu'
               >
@@ -69,7 +69,7 @@ export default function MobileMenu({ menu }: { menu: any }) {
               <div className='w-full'>
                 {menu.map((item: any, index: number) => (
                   <Collapsible key={index}>
-                    <CollapsibleTrigger className='flex space-x-2 items-center w-full text-xl text-black dark:text-white py-2'>
+                    <CollapsibleTrigger className='flex space-x-2 items-center w-full text-xl text-black py-2'>
                       <p>{item.title}</p>
                       <ChevronDown className='h-4 w-4' />
                     </CollapsibleTrigger>
@@ -77,7 +77,7 @@ export default function MobileMenu({ menu }: { menu: any }) {
                       <ul className='flex flex-col ml-4 text-lg'>
                         {item.items.map((link: any) => (
                           <li
-                            className='py-2 text-lg text-black transition-colors hover:text-neutral-500 dark:text-white'
+                            className='py-2 text-lg text-black transition-colors hover:text-neutral-50'
                             key={link.title}
                           >
                             <Link href={link.href} onClick={closeMobileMenu}>

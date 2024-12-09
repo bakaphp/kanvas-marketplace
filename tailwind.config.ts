@@ -41,7 +41,12 @@ module.exports = createTailwindConfig({
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-      colors: {},
+      colors: {
+        "housplit-primary-color": "#FFFFFF",
+        "housplit-secondary-color": "#666666",
+        "housplit-blue-color": "#1164B4",
+        "housplit-green-color": "#30BFBF",
+      },
       fontFamily: {
         sans: ['var(--font-geist-sans)'],
       },

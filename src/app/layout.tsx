@@ -36,13 +36,12 @@ export default async function RootLayout({
 }: {
   children: ReactNode;
 }) {
-  const shopType = detectShopType();
   return (
     <html lang='en' className={Inter_font.className}>
       {/* <link rel="icon" href="/images/favicon.png" sizes="any" /> */}
       <body className='bg-background text-foreground'>
         <ClientLayout>
-          <Navbar type={shopType} />
+          <Navbar />
           <main>{children}</main>
           <Footer />
           <Toaster />
